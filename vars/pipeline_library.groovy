@@ -28,9 +28,9 @@ def call (Map config)
                  sh "ls -la ${pwd()}/source"
                  sh "ls -la ${pwd()}/source/DevOpsProject/"
                  sh "cd /var/jenkins_home/workspace/"
-                 sh "mkdir aoso | mkdir /aoso/DevOps | mkdir /aoso/DevOps/back"
-                 //sh "rm -rf ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
+                 //sh "mkdir aoso | mkdir /aoso/DevOps | mkdir /aoso/DevOps/back"
+                 sh "rm -rf ${config.DestinationFile}"
+                 ///sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  sh "ls -la ${config.DestinationFile} "
             }
             stage('location of docker-compose') 
