@@ -27,7 +27,7 @@ def call (Map config)
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
                  sh "ls -la ${pwd()}/source/DevOpsProject/"
-                 sh "cp -r ${pwd()}/source/DevOpsProject /aoso"
+                 sh "cp -r ${pwd()}/source/DevOpsProject /var/jenkins_home/workspace/aoso"
 
             }
             stage('location of docker-compose') 
