@@ -25,10 +25,11 @@ def call (Map config)
             stage ('move all file')
             {    
                  sh "ls -la ${pwd()}"
+                 sh "ls -la ${pwd()}/source"
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} up -d"
+                    sh "${config.dockerComposeLocation} -f docker-compose-back.yml up -d"
                     echo "Buid Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
