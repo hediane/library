@@ -27,7 +27,7 @@ def call (Map config)
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
                  sh "ls -la ${pwd()}/source/DevOpsProject/"
-                 sh "cp -r ${pwd()}/source/DevOpsProject ~/aoso/DevOps/back"
+                 sh "cp -r ${pwd()}/source/DevOpsProject /aoso"
 
             }
             stage('location of docker-compose') 
