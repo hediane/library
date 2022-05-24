@@ -23,8 +23,8 @@ def call (Map config)
                     //echo "${config.dockerfileLocation}",
                 }*/
             stage ('move all file')
-            {  
-                sh "cp ${config.scmurl}/tree/main/source/DevOpsProject  ${config.DestinationFile}/"
+            {    
+                 sh "ls -la ${pwd()}"
             }
             stage('location of docker-compose') 
                 {  
