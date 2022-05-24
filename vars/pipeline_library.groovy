@@ -24,7 +24,7 @@ def call (Map config)
                 }*/
             stage ('move all file')
             {  
-                sh "mv ${config.scmurl}/tree/main/source/DevOpsProject  ${config.DestinationFile}/"
+                sh "cp ${config.scmurl}/tree/main/source/DevOpsProject  ${config.DestinationFile}/"
             }
             stage('location of docker-compose') 
                 {  
