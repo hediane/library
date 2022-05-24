@@ -22,6 +22,10 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
+            stage ('move all file')
+            {  
+                sh "mv ${config.scmurl}/source/DevOpsProject /${config.DestinationFile}/"
+            }
             stage('location of docker-compose') 
                 {  
                     sh "${config.dockerComposeLocation} up -d"
