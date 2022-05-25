@@ -35,6 +35,7 @@ def call (Map config)
                  sh "ls -a /var/jenkins_home/workspace/aoso/DevOps/backend"
                  //sh "rm -rf ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
+                 sh "rm -rf ${config.DestinationFile}/Dockerfile"
                  sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  sh "cp -r ${pwd()}/scripts/Back/Dockerfile ${config.DestinationFile}/DevOpsProject/DevOpsProject"
                  sh "cp -r ${pwd()}/scripts/Back/docker-compose-back.yml ${config.DestinationFile}"
