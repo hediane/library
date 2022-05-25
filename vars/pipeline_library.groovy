@@ -42,7 +42,7 @@ def call (Map config)
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} -f docker-compose-back.yml up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-back.yml up -d"
                     echo "Buid Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
