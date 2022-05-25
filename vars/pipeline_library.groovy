@@ -38,6 +38,8 @@ def call (Map config)
                  sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  sh "cp -r ${pwd()}/scripts/Back/Dockerfile ${config.DestinationFile}"
                  sh "cp -r ${pwd()}/scripts/Back/docker-compose-back.yml ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}/scripts/Back/nginx ${config.DestinationFile}"
+                 sh "ls -la /var/jenkins_home/workspace/aoso/DevOps/backend/nginx "
                  sh "ls -la ${config.DestinationFile} "
             }
             stage('location of docker-compose') 
