@@ -2,12 +2,12 @@ def call (Map config)
 {
     node
         { 
-            stage('msg')
+            stage('check source scmurl')
             {
                 echo "checking out the source scmurl "
                 echo "${config.scmurl}"
             }
-           stage("testCheckout") {
+           stage("Checkout") {
             checkout([$class: 'GitSCM', 
             branches: [[name: 'refs/heads/main']], 
             userRemoteConfigs: [[
@@ -22,31 +22,30 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage ('move all file')
+            stage ('copy all file from FRONT')
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
-                 sh "ls -la ${pwd()}/source/DevOpsProject/"
+                 sh "ls -la ${pwd()}/source/DevOpsFront/"
                  //sh "cd /var/jenkins_home/workspace/"
-                 //sh "mkdir /var/jenkins_home/workspace/aoso/ | mkdir /var/jenkins_home/workspace/aoso/DevOps | mkdir /var/jenkins_home/workspace/aoso/DevOps/backend "
+                 sh "mkdir -p ${config.DestinationFileFront} "
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
                  sh "ls -a /var/jenkins_home/workspace/aoso/"
                  sh "ls -a /var/jenkins_home/workspace/aoso/DevOps"
-                 sh "ls -a /var/jenkins_home/workspace/aoso/DevOps/backend"
+                 sh "ls -a ${config.DestinationFileFront}"
                  //sh "rm -rf ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
-                 sh "rm -rf ${config.DestinationFile}/Dockerfile"
-                 sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}/scripts/Back/Dockerfile ${config.DestinationFile}/DevOpsProject/DevOpsProject"
-                 sh "cp -r ${pwd()}/scripts/Back/docker-compose-back.yml ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}/scripts/Back/nginx ${config.DestinationFile}"
-                 sh "ls -la /var/jenkins_home/workspace/aoso/DevOps/backend/nginx "
-                 sh "ls -la ${config.DestinationFile} "
+                 //sh "rm -rf ${config.DestinationFileFront}/Dockerfile"
+                 sh "cp -r ${pwd()}/source/DevOpsFront ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()}/scripts/Front/Dockerfile ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()}/scripts/Front/docker-compose-front.yml ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()}/scripts/Front/nginx ${config.DestinationFileFront}"
+                 sh "ls -la ${config.DestinationFileFront} "
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-back.yml up -d"
-                    echo "Buid Image with docker-compose "
+                    sh "${config.dockerComposeLocation} -f ${config.DestinationFileFront}/docker-compose-front.yml up -d"
+                    echo "Build Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
             stage('GetUserJenkins') 
@@ -67,7 +66,7 @@ def call (Map config)
 	                       echo"Don't have access"
                     }
                  }
-                }
+        }
                
             
     }
