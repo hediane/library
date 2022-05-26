@@ -40,8 +40,8 @@ def call (Map config)
                  sh "cp -r ${pwd()}/scripts/Front/Dockerfile ${config.DestinationFileFront}"
                  sh "cp -r ${pwd()}/scripts/Front/docker-compose-front.yml ${config.DestinationFileFront}"
                  sh "cp -r ${pwd()}/scripts/Front/nginx ${config.DestinationFileFront}"
-                  sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFile}"
+                  sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFileFront}"
                  sh "ls -la ${config.DestinationFileFront} "
             }
             stage('location of docker-compose') 
