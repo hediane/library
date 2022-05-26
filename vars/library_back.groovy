@@ -42,7 +42,6 @@ def call (Map config)
                  sh "cp -r ${pwd()}/scripts/Back/nginx ${config.DestinationFile}"
                  sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFile}"
                  sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFile}"
-
                  sh "ls -la /var/jenkins_home/workspace/aoso/DevOps/backend/nginx "
                  sh "ls -la ${config.DestinationFile} "
             }
