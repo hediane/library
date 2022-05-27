@@ -13,7 +13,6 @@ def call (Map config)
             userRemoteConfigs: [[
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
-                //url: 'https://github.com/hediane/teeeeeest.git']]
         ])
          }
             /*stage('location of dockerfile') 
@@ -30,23 +29,23 @@ def call (Map config)
                  //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p ${config.DestinationFileFront} "
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
-                 sh "ls -a /var/jenkins_home/workspace/aoso/"
-                 sh "ls -a /var/jenkins_home/workspace/aoso/DevOps"
+                 sh "ls -a ${config.DestinationFolder1}"
+                 sh "ls -a ${config.DestinationFolder2}"
                  sh "ls -a ${config.DestinationFileFront}"
                  //sh "rm -rf ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFileFront}/Dockerfile"
-                 sh "cp -r ${pwd()}/source/DevOpsFront ${config.DestinationFileFront}"
-                 sh "cp -r ${pwd()}/scripts/Front/Dockerfile ${config.DestinationFileFront}"
-                 sh "cp -r ${pwd()}/scripts/Front/docker-compose-front.yml ${config.DestinationFileFront}"
-                 sh "cp -r ${pwd()}/scripts/Front/nginx ${config.DestinationFileFront}"
-                  sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFileFront}"
-                 sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()} ${config.FrontPath} ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()} ${config.DockerfileLocation} ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()} ${config.dockerComposeFileLocation} ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()} ${config.nginxLOcation} ${config.DestinationFileFront}"
+                 //sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFileFront}"
+                 //sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFileFront}"
                  sh "ls -la ${config.DestinationFileFront} "
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.DestinationFileFront}/docker-compose-front.yml up -d --build "
+                    sh "${config.dockerComposeLocation} -f ${config.DestinationFileFront}/docker-compose-front up -d --build "
                     echo "Build Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
@@ -59,7 +58,7 @@ def call (Map config)
                     echo "${config.devValidator}"
                     if ("${config.devValidator}".contains("${user}"))
                     {
-                        echo"Validate"
+                        echo "Validate"
                     }
                     else
                     {
