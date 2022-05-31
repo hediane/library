@@ -38,7 +38,7 @@ def call (Map config)
                  sh "cp -r ${pwd()}${config.FrontPath} ${config.DestinationFileFront}"
                  sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFileFront}"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFileFront}"
-                 sh "cp -r ${pwd()}${config.nginxLOcation} ${config.DestinationFileFront}"
+                 sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFileFront}"
                  //sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFileFront}"
                  //sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFileFront}"
                  sh "ls -la ${config.DestinationFileFront} "
