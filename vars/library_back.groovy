@@ -40,12 +40,20 @@ def call (Map config)
                  sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}/DevOpsProject/DevOpsProject"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
+
                  sh "ls -la ${config.DestinationFile}/nginx "
                  sh "ls -la ${config.DestinationFile} "
             }
             stage('location of docker-compose') 
                 {  
                     sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-back.yml up -d"
+                    echo "Buid Image with docker-compose "
+                    //echo "${config.dockerfileLocation}",
+                }
+            stage('location of docker-compose elasticsearch') 
+                {  
+                    sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-elasticsearch.yml up -d"
                     echo "Buid Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
@@ -68,7 +76,7 @@ def call (Map config)
                     }
                  }
                 }
-               
+              
             
     }
 
