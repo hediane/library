@@ -53,7 +53,7 @@ def call (Map config)
                 }
             stage('location of docker-compose elasticsearch') 
                 {  
-                    sh "${config.dockerComposeLocation} -f /source/DevOpsProject/docker-compose-elasticsearch.yml up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.elasticsearch} up -d"
                     echo "Buid Image with docker-compose "
                     //echo "${config.dockerfileLocation}",
                 }
