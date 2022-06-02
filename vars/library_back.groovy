@@ -37,7 +37,7 @@ def call (Map config)
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFile}/Dockerfile"
                  sh "cp -r ${pwd()}${config.BackPath} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}/DevOpsProject/DevOpsProject"
+                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}${config.ProjectName}"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
@@ -47,14 +47,14 @@ def call (Map config)
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-back.yml up -d"
-                    echo "Buid Image with docker-compose "
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+                    echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
             stage('location of docker-compose elasticsearch') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.DestinationFile}/docker-compose-elasticsearch.yml up -d"
-                    echo "Buid Image with docker-compose "
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} up -d"
+                    echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
             stage('GetUserJenkins') 
