@@ -46,7 +46,7 @@ def call (Map config)
                  sh "ls -la ${config.DestinationFile} "
             }
             stage('location of docker-compose') 
-                {  // sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
+                {  sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
