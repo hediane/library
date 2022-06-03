@@ -45,15 +45,16 @@ def call (Map config)
                  sh "ls -la ${config.DestinationFile}/nginx "
                  sh "ls -la ${config.DestinationFile} "
             }
-            stage('location of docker-compose') 
-                {  sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+           
+            stage('Elasticsearch') 
+                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-            stage('location of docker-compose elasticsearch') 
+            stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
@@ -75,6 +76,13 @@ def call (Map config)
 	                       echo"Don't have access"
                     }
                  }
+
+                stage('location of docker-compose') 
+                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+                    echo "Buid Image with docker-compose"
+                    //echo "${config.dockerfileLocation}",
+                }
                 }
               
             
