@@ -47,13 +47,13 @@ def call (Map config)
             }
             stage('location of docker-compose') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
             stage('location of docker-compose elasticsearch') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
