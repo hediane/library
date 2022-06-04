@@ -41,6 +41,7 @@ def call (Map config)
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}${config.dockerComposeSonarQube} ${config.dockerComposeSonarQubeDestintion}"
 
                  sh "ls -la ${config.DestinationFile}/nginx "
                  sh "ls -la ${config.DestinationFile} "
@@ -54,7 +55,7 @@ def call (Map config)
                 }
             stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
