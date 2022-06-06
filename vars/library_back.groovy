@@ -59,6 +59,15 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
+            stage('SonarQube Analysis') 
+                {  
+                    def scannerHome = tool 'SonarScanner for MSBuild'
+                    withSonarQubeEnv() {
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aoso\""
+                    sh "dotnet build "
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
+    }
+                }
             stage('GetUserJenkins') 
                 {  
                     wrap([$class: 'BuildUser']) {
