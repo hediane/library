@@ -22,6 +22,20 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
+            stage('Container of SonarQube') 
+                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
+                    echo "Buid Image with docker-compose"
+                    //echo "${config.dockerfileLocation}",
+                }
+            stage('SonarQube Analysis') 
+                {  
+                    withSonarQubeEnv('sonarQube') {
+                    sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aoso\""
+                    sh "dotnet build source/DevOpsProject/DevOpsProject.sln"
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
+    }
             stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
@@ -53,20 +67,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-            stage('Container of SonarQube') 
-                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
-                    echo "Buid Image with docker-compose"
-                    //echo "${config.dockerfileLocation}",
-                }
-            stage('SonarQube Analysis') 
-                {  
-                    withSonarQubeEnv('sonarQube') {
-                    sh "dotnet restore"
-                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aoso\""
-                    sh "dotnet build source/DevOpsProject/DevOpsProject.sln"
-                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
-    }
+            
                 }
             stage('GetUserJenkins') 
                 {  
