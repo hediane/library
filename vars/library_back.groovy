@@ -64,7 +64,7 @@ def call (Map config)
                     withSonarQubeEnv('sonarQube') {
                     sh "dotnet restore"
                     sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aoso\""
-                    sh "dotnet build "
+                    sh "dotnet build source/DevOpsProject/DevOpsProject.sln"
                     sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
     }
                 }
