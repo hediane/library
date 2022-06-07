@@ -60,6 +60,7 @@ def call (Map config)
 
 
             }
+                    }}
             
             stage ('copy all file from BACK')
             {    
