@@ -82,6 +82,8 @@ def call (Map config)
                             sh "dotnet build DevOpsProject.csproj"
                             //sh "dotnet ${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner.MSBuild.dll end"
                 }
+                    }
+            }
             
             
             stage ('copy all file from BACK')
