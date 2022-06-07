@@ -35,7 +35,7 @@ def call (Map config)
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
                     sh " ls -la ${pwd()}"
-                    def scannerHome = tool 'SonarQube Scanner';
+                    def scannerHome = tool 'sonarscanner';
                     sh "dotnet ${scannerHome}/bin/sonar-scanner begin /k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
                     //sh 'dotnet sonarscanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
                     sh "dotnet build DevOpsProject.csproj"
