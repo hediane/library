@@ -28,7 +28,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Quality Gate') 
+           /* stage('Quality Gate') 
                 {  
                     withSonarQubeEnv() {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -39,11 +39,11 @@ def call (Map config)
                     //sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aoso -Dsonar.sources=. -Dsonar.host.url=http://192.168.56.113:9000 -Dsonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     //sh "${scannerHome}/bin/sonar-scanner -D /k:Aoso -D /d:sonar.host.url=http://192.168.56.113:9000  -D /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     //sh "dotnet build DevOpsProject.csproj"
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aoso"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aoso "
                     
                     }
                 }
-            }
+            }*/
             
             /*stage('SonarQube analysis') {
 
@@ -67,14 +67,21 @@ def call (Map config)
                     }}*/
 
             
-                /*stage("SonarQube analysis") {
-                    def sonarScanner = tool name: 'SonarScanner for MSBuild', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    sh "${sonarScanner}/bin/sonar-scanner begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
-                    sh "dotnet build DevOpsProject.csproj"
-                    sh "dotnet ${sonarScanner}/bin/sonar-scanner end"   
-                            
-                    
-                }*/
+            stage("SonarQube analysis") {
+                    MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner';                
+                    //sh "${sonarScanner}/bin/sonar-scanner begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
+                    //sh "dotnet build DevOpsProject.csproj"
+                    //sh "dotnet ${sonarScanner}/bin/sonar-scanner end"   
+                    withSonarQubeEnv('SonarQube') {
+                            dir("Source/${config.ProjectName}") {
+                            sh " ls -la ${pwd()}"
+                            //sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=AosoDevops -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51 "
+                            //sh "dotnet build DevOpsProject.csproj"
+                            //sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner end" }
+                            sh "dotnet ${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner.MSBuild.dll begin -Dsonar.projectKey=Aoso"
+                            sh "dotnet build DevOpsProject.csproj"
+                            //sh "dotnet ${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner.MSBuild.dll end"
+                }
             
             
             stage ('copy all file from BACK')
