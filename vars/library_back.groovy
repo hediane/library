@@ -43,7 +43,7 @@ def call (Map config)
                 }*/
             stage('SonarQube analysis') {
 
-                    def scannerHome = tool 'SonarScanner for MSBuild';
+                    def scannerHome = tool 'sonarscanner ';
 
                     withSonarQubeEnv('SonarQube') {
 
