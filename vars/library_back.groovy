@@ -55,6 +55,7 @@ def call (Map config)
                     sh "dotnet ${MSBUILD_SQ_SCANNER_HOME}/SonarScanner.MSBuild.dll end"}
 
                     }
+                    }}
             stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
