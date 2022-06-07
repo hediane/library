@@ -45,7 +45,7 @@ def call (Map config)
 
                     def scannerHome = tool 'SonarScanner for MSBuild ';
 
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('sonarQube') {
 
                     dir("source/${config.ProjectName}") {
 
