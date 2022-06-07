@@ -36,9 +36,10 @@ def call (Map config)
                     sh " ls -la ${pwd()}"
                     def scannerHome = tool name: 'sonarscanner';
                     //sh "dotnet ${scannerHome}/bin/sonar-scanner  /k:Aoso /d:sonar.host.url= http://192.168.56.113:9000"
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aoso -Dsonar.sources=. -Dsonar.host.url=http://192.168.56.113:9000 -Dsonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
+                    sh "${scannerHome}/bin/sonar-scanner begin sonar.projectKey=Aoso sonar.sources=. sonar.host.url=http://192.168.56.113:9000 sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     //sh "${scannerHome}/bin/sonar-scanner -D /k:Aoso -D /d:sonar.host.url=http://192.168.56.113:9000  -D /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     sh "dotnet build DevOpsProject.csproj"
+
                     }
                 }
             }
