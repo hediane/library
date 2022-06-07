@@ -28,7 +28,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-            stage('SonarQube Analysis') 
+            /*stage('SonarQube Analysis') 
                 {  
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -40,7 +40,23 @@ def call (Map config)
                     sh 'dotnet sonarscanner end /d:sonar.login="aoso"'
                     }
                 }
-                }
+                }*/
+            stage('SonarQube analysis') {
+
+                    def scannerHome = tool 'sonarscanner';
+
+                    withSonarQubeEnv('SonarQube') {
+
+                    dir("source/${config.ProjectName}") {
+
+                    sh " ls -la ${pwd()}"
+
+                    // sh "dotnet tool install --global dotnet-sonarscanner"
+
+                    sh (""" ${scannerHome}/bin/sonar-scanner begin k:"Aoso" /d:sonar.host.url='http://192.168.56.113:9000'""")
+
+
+            }
             
             stage ('copy all file from BACK')
             {    
