@@ -41,9 +41,9 @@ def call (Map config)
                     }
                 }
                 }*/
-            /*stage('SonarQube analysis') {
+            stage('SonarQube analysis') {
 
-                    def scannerHome = tool 'sonarscanner ';
+                    def scannerHome = tool 'SonarScanner for MSBuild ';
 
                     withSonarQubeEnv('SonarQube') {
 
@@ -54,22 +54,22 @@ def call (Map config)
                     // sh "dotnet tool install --global dotnet-sonarscanner"
 
                    // sh (""" ${scannerHome}/bin/sonar-scanner begin k:"Aoso" /d:sonar.host.url='http://192.168.56.113:9000'""")
-                   sh "dotnet ${scannerHome}/sonarscanner.MSBuild.dll begin /k:\"Aoso\""
+                   sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"Aoso\""
                    sh "dotnet build DevOpsProject.csproj"
-                   sh "dotnet ${scannerHome}/sonarscanner.MSBuild.dll end"
+                   sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
 
 
             }
-                    }}*/
+                    }}
             
-                stage("SonarQube analysis") {
-                    def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                /*stage("SonarQube analysis") {
+                    def sonarScanner = tool name: 'SonarScanner for MSBuild', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     sh "${sonarScanner}/bin/sonar-scanner begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
                     sh "dotnet build DevOpsProject.csproj"
                     sh "dotnet ${sonarScanner}/bin/sonar-scanner end"   
                             
                     
-                }
+                }*/
             
             
             stage ('copy all file from BACK')
