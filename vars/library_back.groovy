@@ -31,7 +31,7 @@ def call (Map config)
             stage('SonarQube Analysis') 
                 {  
                     
-                    withSonarQubeEnv('sonarQube') {
+                    withSonarQubeEnv() {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
                     sh " ls -la ${pwd()}"
