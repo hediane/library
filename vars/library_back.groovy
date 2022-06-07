@@ -22,12 +22,12 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Container of SonarQube') 
+            /*stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
-                }
+                }*/
             stage('SonarQube Analysis') 
                 {  
                     
