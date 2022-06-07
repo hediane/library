@@ -43,7 +43,7 @@ def call (Map config)
                 }*/
             stage('SonarQube analysis') {
 
-                    def scannerHome = tool 'sonarscanner';
+                    def scannerHome = tool 'SonarScanner for MSBuild';
 
                     withSonarQubeEnv('SonarQube') {
 
@@ -53,7 +53,10 @@ def call (Map config)
 
                     // sh "dotnet tool install --global dotnet-sonarscanner"
 
-                    sh (""" ${scannerHome}/bin/sonar-scanner begin k:"Aoso" /d:sonar.host.url='http://192.168.56.113:9000'""")
+                   // sh (""" ${scannerHome}/bin/sonar-scanner begin k:"Aoso" /d:sonar.host.url='http://192.168.56.113:9000'""")
+                   sh "dotnet ${scannerHome}/sonarscanner.MSBuild.dll begin /k:\"Aoso\""
+                   sh "dotnet build DevOpsProject.csproj"
+                   sh "dotnet ${scannerHome}/sonarscanner.MSBuild.dll end"
 
 
             }
