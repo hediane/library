@@ -37,7 +37,7 @@ def call (Map config)
                     sh " ls -la ${pwd()}"
                     def scannerHome = tool name: 'sonarscanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     //sh "dotnet ${scannerHome}/bin/sonar-scanner begin /k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
-                    sh 'dotnet ${scannerHome}/bin/sonar-scanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
+                    sh '${scannerHome}/bin/sonar-scanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
                     sh "dotnet build DevOpsProject.csproj"
                     sh 'dotnet sonarscanner end /d:sonar.login="aoso"'
                     }
