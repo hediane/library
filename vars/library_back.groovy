@@ -28,14 +28,18 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-            /*stage('SonarQube Analysis') 
+            stage('SonarQube Analysis') 
                 {  
                     withSonarQubeEnv('sonarQube') {
-                    sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
-                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aoso\""
-                    sh "dotnet build source/DevOpsProject/DevOpsProject.sln"
-                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
-    }*/
+                    //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
+                    dir("source/${config.ProjectName}") {
+                    sh " ls -la ${pwd()}"
+                    sh 'dotnet sonarscanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
+                    sh "dotnet build DevOpsProject.csproj"
+                    sh 'dotnet sonarscanner end /d:sonar.login="aoso"'
+                    }
+                }
+                }
             stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
