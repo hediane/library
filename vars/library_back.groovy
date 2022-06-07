@@ -30,7 +30,7 @@ def call (Map config)
                 }
             stage('SonarQube Analysis') 
                 {  
-                    def scannerHome = tool 'SonarScanner for MSBuild '
+                    def scannerHome = tool 'SonarQube Scanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
