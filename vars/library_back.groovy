@@ -7,7 +7,7 @@ def call (Map config)
                 echo "checking out the source scmurl "
                 echo "${config.scmurl}"
             }
-           stage("testCheckout") {
+           stage("GitSCM") {
             checkout([$class: 'GitSCM', 
             branches: [[name: 'refs/heads/main']], 
             userRemoteConfigs: [[
