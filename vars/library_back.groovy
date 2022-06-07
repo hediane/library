@@ -63,12 +63,12 @@ def call (Map config)
                     }}*/
             stages {
                 stage("SonarQube analysis") {
-                            script {
-                                def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                                sh "${sonarScanner}/bin/sonar-scanner -e -Dsonar.host.url=xxx begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
-                                }
+                    def sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    sh "${sonarScanner}/bin/sonar-scanner begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
+                    sh "dotnet build DevOpsProject.csproj"
+                    sh "dotnet ${sonarScanner}/bin/sonar-scanner end"   
                             
-                        }
+                    
                 }
             
             stage ('copy all file from BACK')
