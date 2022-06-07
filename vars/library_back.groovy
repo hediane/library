@@ -46,7 +46,6 @@ def call (Map config)
                     def scannerHome = tool 'SonarScanner 4.10.0'
                     MSBUILD_SQ_SCANNER_HOME = tool name: 'sonarscanner', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
                     }
-                    steps {
                     withSonarQubeEnv('SonarQube') {
                     dir("Source/${config.ProjectName}") {
                     sh " ls -la ${pwd()}"
@@ -54,7 +53,7 @@ def call (Map config)
                     sh "dotnet build DevOpsProject.csproj"
                     sh "dotnet ${MSBUILD_SQ_SCANNER_HOME}/SonarScanner.MSBuild.dll end"}
 
-                    }
+                    
                     }}
             stage ('copy all file from BACK')
             {    
