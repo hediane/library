@@ -77,8 +77,10 @@ def call (Map config)
                         sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=Aoso -Dsonar.sources=. -Dsonar.host.url=http://192.168.56.113:9000 -Dsonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                         // sh ("${scannerHome}/bin/sonar-scanner begin -D /k:AosoDevops -D /d:sonar.host.url=http://localhost:9000 -D /d:sonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51")
                         sh "dotnet build "
-                        sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner end" }
+                        sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner end" 
+                        }
                     }
+            }
             
             
             stage ('copy all file from BACK')
