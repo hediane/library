@@ -34,7 +34,7 @@ def call (Map config)
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
                     sh " ls -la ${pwd()}"
-                    sh "dotnet sonarscanner begin /k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'  /d:sonar.login='aoso'  "
+                    sh "dotnet sonarscanner begin /k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'  /d:sonar.login='ceba0079d34f41e960d63a7180290c53ef9ae895' "
                     //sh 'dotnet sonarscanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
                     sh "dotnet build DevOpsProject.csproj"
                     sh 'dotnet sonarscanner end /d:sonar.login="aoso"'
