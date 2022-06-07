@@ -67,8 +67,6 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-            
-                }
             stage('GetUserJenkins') 
                 {  
                     wrap([$class: 'BuildUser']) {
@@ -87,6 +85,7 @@ def call (Map config)
 	                       echo"Don't have access"
                     }
                  }
+                }
 
                 stage('location of docker-compose') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
@@ -94,9 +93,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }
-                }
+        }
               
             
-    }
-
 }
