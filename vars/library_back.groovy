@@ -31,10 +31,9 @@ def call (Map config)
             stage('SonarQube Analysis') 
                 {  
                     
+                    def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
-                   
-                    def scannerHome = tool name: 'sonarscanner'
                     //sh "dotnet ${scannerHome}/bin/sonar-scanner begin /k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
                     sh '${scannerHome}/bin/sonar-scanner begin /k:"Aoso" /d:sonar.host.url="http://192.168.56.113:9000"  /d:sonar.login="aoso" '
                     sh "dotnet build DevOpsProject.csproj"
