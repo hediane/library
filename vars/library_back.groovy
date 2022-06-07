@@ -28,7 +28,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('SonarQube Analysis') 
+            stage('Quality Gate') 
                 {  
                     withSonarQubeEnv() {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -41,7 +41,8 @@ def call (Map config)
                     sh "dotnet build DevOpsProject.csproj"
                     }
                 }
-                }
+            }
+            
             /*stage('SonarQube analysis') {
 
                     def scannerHome = tool 'SonarScanner for MSBuild ';
