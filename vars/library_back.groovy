@@ -28,9 +28,9 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }*/
-           /* stage('Quality Gate') 
+            stage('Quality Gate') 
                 {  
-                    withSonarQubeEnv() {
+                    withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
                     sh " ls -la ${pwd()}"
@@ -43,7 +43,7 @@ def call (Map config)
                     
                     }
                 }
-            }*/
+            }
             
             /*stage('SonarQube analysis') {
 
@@ -67,7 +67,7 @@ def call (Map config)
                     }}*/
 
             
-            stage("SonarQube analysis")
+           /*stage("SonarQube analysis")
             {
                         MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
                         withSonarQubeEnv('sonarQube') {
@@ -80,7 +80,7 @@ def call (Map config)
                         sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner end" 
                         }
                     }
-            }
+            }*/
             
             
             stage ('copy all file from BACK')
