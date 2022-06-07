@@ -72,7 +72,7 @@ def call (Map config)
                     //sh "${sonarScanner}/bin/sonar-scanner begin k:'Aoso' /d:sonar.host.url='http://192.168.56.113:9000'"
                     //sh "dotnet build DevOpsProject.csproj"
                     //sh "dotnet ${sonarScanner}/bin/sonar-scanner end"   
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('sonarQube') {
                             dir("Source/${config.ProjectName}") {
                             sh " ls -la ${pwd()}"
                             //sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=AosoDevops -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51 "
