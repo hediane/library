@@ -96,6 +96,8 @@ def call (Map config)
                         sh "dotnet build"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         }
+                        }
+            }
                                     
             stage ('copy all file from BACK')
             {    
