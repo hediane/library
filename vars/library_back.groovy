@@ -97,13 +97,16 @@ def call (Map config)
                         }
                         }
             }*/
-            stage('SonarQube Analysis') {
+
+            stage('SonarQube Analysis')
+               {
                     def scannerHome = tool name:'sonarscanner for MSBuild',type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
-                    withSonarQubeEnv('sonarQube') {
+                    withSonarQubeEnv('sonarQube')
+                    {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"Aoso\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
-                        sh "dotnet build DevOpsProject.csproj"
+                        sh "dotnet build "
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         }
                     }
