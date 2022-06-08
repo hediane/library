@@ -22,7 +22,7 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Container of SonarQube') 
+            /*stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
@@ -86,9 +86,8 @@ def call (Map config)
 
                     //def scannerHome = tool 'sonarscanner';
 
-                        // MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
-
-                        scannerHome = tool name: 'SonarScanner for MSBuild';
+                        // MSBUILD_SQ_SCANER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
+                        def scannerHome = tool name: 'SonarScanner for MSBuild'
                         withSonarQubeEnv('sonarQube') {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
