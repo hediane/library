@@ -28,7 +28,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Quality Gate') 
+           /* stage('Quality Gate') 
                 {  scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -42,7 +42,7 @@ def call (Map config)
                     
                     }
                 }
-            }
+            }*/
             
             /*stage('SonarQube analysis') {
 
@@ -70,7 +70,8 @@ def call (Map config)
             {
                         MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
                         withSonarQubeEnv('sonarQube') {
-                        dir("source/${config.ProjectName}") {
+                        dir("source/${config.ProjectName}")
+                    {
                         sh " ls -la ${pwd()}"
                         // sh "dotnet tool install --global dotnet-sonarscanner"
                         sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=Aoso -Dsonar.sources=. -Dsonar.host.url=http://192.168.56.113:9000 -Dsonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
@@ -79,9 +80,23 @@ def call (Map config)
                         sh "${MSBUILD_SQ_SCANNER_HOME}/bin/sonar-scanner end" 
                         }
                     }
-            }*/
-            
-            
+            }
+            */
+            stage('Quality Gate') {
+
+                    //def scannerHome = tool 'sonarscanner';
+
+                        // MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
+
+                        def scannerHome = tool 'SonarScanner for MSBuild'
+                        withSonarQubeEnv('sonarQube') {
+                        dir("Source/${config.ProjectName}") {
+                        sh " ls -la ${pwd()}"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"Aoso\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
+                        sh "dotnet build"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
+                        }
+                                    
             stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
