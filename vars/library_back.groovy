@@ -88,7 +88,7 @@ def call (Map config)
 
                         // MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
 
-                        scannerHome = tool 'SonarScanner for MSBuild'
+                        def scannerHome = tool name: 'SonarScanner for MSBuild'
                         withSonarQubeEnv('sonarQube') {
                         dir("Source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
