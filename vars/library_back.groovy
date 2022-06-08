@@ -98,7 +98,7 @@ def call (Map config)
                         }
             }*/
             stage('SonarQube Analysis') {
-                    def scannerHome = tool 'sonarscanner'
+                    def scannerHome = tool 'msbuild'
                     withSonarQubeEnv() {
                     sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aosora\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     sh "dotnet build"
