@@ -27,8 +27,8 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
-                }
-           /* stage('Quality Gate') 
+                }*/
+           stage('Quality Gate') 
                 {  scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -42,7 +42,7 @@ def call (Map config)
                     
                     }
                 }
-            }*/
+            }
             
             /*stage('SonarQube analysis') {
 
@@ -82,7 +82,7 @@ def call (Map config)
                     }
             }
             */
-            stage('Quality Gate') {
+            /*stage('Quality Gate') {
 
                     //def scannerHome = tool 'sonarscanner';
 
@@ -96,7 +96,7 @@ def call (Map config)
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         }
                         }
-            }
+            }*/
                                     
             stage ('copy all file from BACK')
             {    
