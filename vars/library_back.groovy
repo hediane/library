@@ -28,8 +28,8 @@ def call (Map config)
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
                 }*/
-           stage('Quality Gate') 
-                {  scannerHome = tool name: 'sonarscanner';
+           /*stage('Quality Gate') 
+                {   scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                     dir("source/${config.ProjectName}") {
@@ -42,7 +42,7 @@ def call (Map config)
                     
                     }
                 }
-            }
+            }*/
             
             /*stage('SonarQube analysis') {
 
@@ -82,21 +82,21 @@ def call (Map config)
                     }
             }
             */
-            /*stage('Quality Gate') {
+            stage('Quality Gate') {
 
                     //def scannerHome = tool 'sonarscanner';
-
+                        def scannerHome = tool name: 'SonarScanner for MSBuild'
                         // MSBUILD_SQ_SCANER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
                         withSonarQubeEnv('sonarQube') {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        scannerHome = tool name: 'SonarScanner for MSBuild';
+                        
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"Aoso\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                         sh "dotnet build"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         }
                         }
-            }*/
+            }
                                     
             stage ('copy all file from BACK')
             {    
