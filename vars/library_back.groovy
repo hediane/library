@@ -82,7 +82,7 @@ def call (Map config)
                     }
             }
             */
-            stage('Quality Gate') {
+            /*stage('Quality Gate') {
 
                     //def scannerHome = tool 'sonarscanner';
                         def scannerHome = tool name: 'SonarScanner for MSBuild'
@@ -96,7 +96,15 @@ def call (Map config)
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         }
                         }
-            }
+            }*/
+            stage('SonarQube Analysis') {
+                    def scannerHome = tool 'SonarScanner for MSBuild'
+                    withSonarQubeEnv() {
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aosora\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
+                    sh "dotnet build"
+                    sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
+                    }
+  }
                                     
             stage ('copy all file from BACK')
             {    
