@@ -88,9 +88,9 @@ def call (Map config)
 
                         // MSBUILD_SQ_SCANNER_HOME = tool 'sonarscanner'//, type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation';
 
-                        def scannerHome = tool name: 'SonarScanner for MSBuild'
+                        scannerHome = tool name: 'SonarScanner for MSBuild';
                         withSonarQubeEnv('sonarQube') {
-                        dir("Source/${config.ProjectName}") {
+                        dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"Aoso\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                         sh "dotnet build"
