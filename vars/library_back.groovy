@@ -29,10 +29,7 @@ def call (Map config)
                     
                     //echo "${config.dockerfileLocation}",
                 }
-            stage('remove') 
-                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build """
-                    sh "rm -rf /var/jenkins_home/workspace/AosoBack/source/DevOpsProject/DevOpsProject/.sonarqube/out/0/output-cs"
-                }
+            
            /*stage('Quality Gate') 
                 {   scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
