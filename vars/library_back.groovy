@@ -98,7 +98,7 @@ def call (Map config)
                         }
             }*/
 
-            stage('SonarQube Analysis')
+            /*stage('SonarQube Analysis')
                {
                     def scannerHome = tool name:'sonarscanner for MSBuild',type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
                     withSonarQubeEnv('sonarQube')
@@ -109,10 +109,10 @@ def call (Map config)
                         sh "dotnet build "
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=7b8331649ea306f1cbf31dd12ad535e4bd608d58"
                         }
-                    }
+                    }*/
   }
                                     
-            stage ('copy all file from BACK')
+            /**stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
@@ -168,7 +168,7 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
-                }
+                }*/
         }
               
             
