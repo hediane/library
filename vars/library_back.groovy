@@ -107,7 +107,7 @@ def call (Map config)
                         sh " ls -la ${pwd()}"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"aosoDevops\" "
                         sh "dotnet build "
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /k:\"aosoDevops\""
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=aoso"
                         }
                     }
   }
