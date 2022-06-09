@@ -9,7 +9,7 @@ def call (Map config)
             }
            stage("GitSCM") {
             checkout([$class: 'GitSCM', 
-            branches: [[name: '*/main']], 
+            branches: [[name: 'refs/heads/main']], 
             userRemoteConfigs: [[
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
@@ -22,14 +22,12 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Container of SonarQube') 
+            /*stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
-                    
                     //echo "${config.dockerfileLocation}",
-                }
-            
+                }*/
            /*stage('Quality Gate') 
                 {   scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
@@ -102,19 +100,19 @@ def call (Map config)
 
             stage('SonarQube Analysis')
                {
-                    def scannerHome = tool name:'sonarscanner for MSBuild'
+                    def scannerHome = tool name:'sonarscanner for MSBuild',type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
                     withSonarQubeEnv('sonarQube')
                     {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"hediane\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:aosoDevops /d:sonar.host.url=http://192.168.56.113:9000 /d:sonar.login=7b8331649ea306f1cbf31dd12ad535e4bd608d58 "
                         sh "dotnet build "
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /k:\"hediane\""
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=aoso"
                         }
                     }
-               }  
-                              
-            /**stage ('copy all file from BACK')
+  }
+                                    
+            /*stage ('copy all file from BACK')
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
@@ -170,8 +168,8 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
                     echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
-                }*/
+                }
         }
               
-            
+          */  
 }
