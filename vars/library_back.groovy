@@ -102,12 +102,12 @@ def call (Map config)
 
             stage('SonarQube Analysis')
                {
-                   scannerHome = tool name:'sonarscanner for MSBuild'
+                    def scannerHome = tool name:'sonarscanner for MSBuild'
                     withSonarQubeEnv('sonarQube')
                     {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"hediane\""
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"hediane\" /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce"
                         sh "dotnet build "
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /k:\"hediane\""
                         }
