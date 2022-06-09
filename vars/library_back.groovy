@@ -31,7 +31,7 @@ def call (Map config)
                 }
             stage('remove') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build """
-                    sh "rm -rf /var/jenkins_home/workspace/AosoBack/source/DevOpsProject/DevOpsProject/.scannerwork/report-task.txt"
+                    sh "rm -rf /var/jenkins_home/workspace/AosoBack/source/DevOpsProject/DevOpsProject/.sonarqube/out/0/output-cs"
                 }
            /*stage('Quality Gate') 
                 {   scannerHome = tool name: 'sonarscanner';
