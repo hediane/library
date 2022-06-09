@@ -100,14 +100,14 @@ def call (Map config)
 
             stage('SonarQube Analysis')
                {
-                    def scannerHome = tool name:'sonarscanner for MSBuild'
+                    def scannerHome = tool name:'sonarscanner for MSBuild',type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
                     withSonarQubeEnv('sonarQube')
                     {
                         dir("source/${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        sh "${scannerHome}/SonarScanner.MSBuild.dll begin /k:hediane /d:sonar.login=682621cc5679231b9b59efbec508d3d80100e441 "
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:hediane /d:sonar.login=682621cc5679231b9b59efbec508d3d80100e441 "
                         sh "dotnet build "
-                        sh "${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=682621cc5679231b9b59efbec508d3d80100e441"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=682621cc5679231b9b59efbec508d3d80100e441"
                         }
                     }
   }
@@ -116,7 +116,8 @@ def call (Map config)
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
-                 sh "ls -la ${pwd()}/${config.BackPath}"
+                 sh "ls -la ${p
+                 wd()}/${config.BackPath}"
                  //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
