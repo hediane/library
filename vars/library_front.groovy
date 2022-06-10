@@ -9,7 +9,7 @@ def call (Map config)
             }
            stage("Checkout") {
             checkout([$class: 'GitSCM', 
-            branches: [[name: 'refs/heads/main']], 
+            branches: [[name: '*/main']], 
             userRemoteConfigs: [[
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
@@ -22,7 +22,7 @@ def call (Map config)
                     dir("${config.FrontPath}") {
                     sh " ls -la ${pwd()}"
                     //sh "dotnet ${scannerHome}/bin/sonar-scanner  /k:AosoFront /d:sonar.host.url= http://192.168.56.113:9000"
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront -Dsonar.sources=. -Dsonar.login=29fe91d338d972127f00d40ba7b9dabcd01363da -Dsonar.scm.provider=git "
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront -Dsonar.login=29fe91d338d972127f00d40ba7b9dabcd01363da -Dsonar.scm.provider=git "
                     //sh "${scannerHome}/bin/sonar-scanner -D /k:Aoso -D /d:sonar.host.url=http://192.168.56.113:9000  -D /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
                     //sh "dotnet build "
                     //sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront "
