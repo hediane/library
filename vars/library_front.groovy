@@ -29,6 +29,7 @@ def call (Map config)
                     
                     }
                 }
+                }
             /*stage('location of dockerfile') 
                 {  
                     sh "docker build -t teeeeeest -f ${config.dockerfileLocation} ."
