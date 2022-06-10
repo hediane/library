@@ -15,6 +15,12 @@ def call (Map config)
                 url:"${config.scmurl}"]]
         ])
          }
+         stage('Container of SonarQube') 
+                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
+                    echo "Buid Image with docker-compose sonar "
+                    //echo "${config.dockerfileLocation}",
+                }
          stage('Quality Gate') 
                 {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
