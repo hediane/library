@@ -46,7 +46,8 @@ def call (Map config)
                  sh "ls -la ${config.DestinationFileFront} "
             }
             stage('Container of SonarQube') 
-                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
+                {  sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} build "
+
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
