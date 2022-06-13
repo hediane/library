@@ -22,7 +22,7 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage ('copy all file from FRONT')
+            /*stage ('copy all file from FRONT')
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
@@ -44,29 +44,29 @@ def call (Map config)
                  sh "cp -r ${pwd()}/source/DevOpsFront/package.json ${config.DestinationFileFront}"
                  sh "cp -r ${pwd()}/source/DevOpsFront/package-lock.json ${config.DestinationFileFront}"
                  sh "ls -la ${config.DestinationFileFront} "
-            }
-            stage('Container of SonarQube') 
-                {  sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} build "
+            }*/
+           /* stage('Container of SonarQube') 
+                { // sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} build "
 
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
-                }
-        /* stage('Quality Gate') 
+                }*/
+         stage('Quality Gate') 
                 {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                             dir("${config.FrontPath}") {
                                     sh " ls -la ${pwd()}"
                                     //sh "dotnet ${scannerHome}/bin/sonar-scanner  /k:AosoFront /d:sonar.host.url= http://192.168.56.113:9000"
-                                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront -Dsonar.login=29fe91d338d972127f00d40ba7b9dabcd01363da -Dsonar.scm.provider=git "
+                                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront -Dsonar.login=a650a854dfc5fdfd835f432b6cbf52f369f6a2b1 -Dsonar.scm.provider=git "
                                     //sh "${scannerHome}/bin/sonar-scanner -D /k:Aoso -D /d:sonar.host.url=http://192.168.56.113:9000  -D /d:sonar.login=ab9f339761ec69b84c33072c739b28b604d3f8ce "
-                                    //sh "dotnet build "
+                                    sh "dotnet build "
                                     //sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Aosofront "
                                     
                             }
                 }
-                }*/
+                }
            /* stage('location of docker-compose') 
                 {  
                     sh "${config.dockerComposeLocation} -f ${config.DestinationFileFront}/docker-compose-front.yml up -d --build "
