@@ -9,6 +9,7 @@ def call (Map config)
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
                
-        ])
+            ])
+                }
         }
 }
