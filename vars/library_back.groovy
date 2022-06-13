@@ -1,21 +1,7 @@
-def call (Map config)
+/*def call (Map config)
 {
     node
-        { 
-            stage('check source scmurl')
-            {
-                echo "checking out the source scmurl "
-                echo "${config.scmurl}"
-            }
-            stage("GitSCM") {
-            checkout([$class: 'GitSCM', 
-            branches: [[name: 'refs/heads/main']], 
-            userRemoteConfigs: [[
-                //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
-                url:"${config.scmurl}"]]
-               
-        ])
-         }
+       
            /* stage('location of dockerfile') 
                 {  
                     sh "docker build -t teeeeeest -f ${config.dockerfileLocation} ."
@@ -98,20 +84,7 @@ def call (Map config)
                         }
             }*/
 
-            stage('SonarQube Analysis')
-               {
-                    def scannerHome = tool name:'SonarScanner for MSBuild'
-                    withSonarQubeEnv('SonarQube')
-                    {
-                        dir("${config.ProjectName}") {
-                        sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:aosohediane /d:sonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51 "
-                        sh "dotnet build"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51"
-                        //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
-                        }
-                    }
-  }
+            
                  /* stage('Quality code analysis') 
                 {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
@@ -128,65 +101,8 @@ def call (Map config)
                 }
                 }*/
                                     
-            /*stage ('copy all file from BACK')
-            {    
-                 sh "ls -la ${pwd()}"
-                 sh "ls -la ${pwd()}/source"
-                 sh "ls -la ${p
-                 wd()}/${config.BackPath}"
-                 //sh "cd /var/jenkins_home/workspace/"
-                 sh "mkdir -p /srv/aoso/DevOps/backend "
-                 //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
-                sh "ls -a ${config.DestinationFolder1}"
-                sh "ls -a ${config.DestinationFolder2}"
-                sh "ls -a ${config.DestinationFile}"
-                 //sh "rm -rf ${config.DestinationFile}"
-                 //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
-                 //sh "rm -rf ${config.DestinationFile}/Dockerfile"
-                 sh "cp -r ${pwd()}${config.BackPath} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}${config.ProjectName}"
-                 sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.dockerComposeSonarQube} ${config.dockerComposeSonarQubeDestintion}"
-
-                 sh "ls -la ${config.DestinationFile}/nginx "
-                 sh "ls -la ${config.DestinationFile} "
-            }
            
-            stage('Elasticsearch') 
-                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} up -d"
-                    echo "Buid Image with docker-compose"
-                    //echo "${config.dockerfileLocation}",
-                }
-            stage('GetUserJenkins') 
-                {  
-                    wrap([$class: 'BuildUser']) {
-                    def user = env.BUILD_USER_ID
-                    echo "${user}"
-                    //def list = ['AmaniGHADDAB']
-                    echo "${config.devValidator}"
-                    if ("${config.devValidator}".contains("${user}"))
-                    {
-                        echo"Validate"
-                    }
-                    else
-                    {
-                           
-                        //slackSend color: 'danger', channel: '#devops', message: "<${currentBuild.absoluteUrl}|Server build ${env.BUILD_NUMBER}> failed to deploy build "
-	                       echo"Don't have access"
-                    }
-                 }
-                }
+            
+            
 
-                stage('location of docker-compose') 
-                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
-                    echo "Buid Image with docker-compose"
-                    //echo "${config.dockerfileLocation}",
-                }
-        }
-              
-          */  
-}}
+ 
