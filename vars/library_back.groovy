@@ -7,7 +7,7 @@ def call (Map config)
                 echo "checking out the source scmurl "
                 echo "${config.scmurl}"
             }
-           stage("GitSCM") {
+            stage("GitSCM") {
             checkout([$class: 'GitSCM', 
             branches: [[name: 'refs/heads/main']], 
             userRemoteConfigs: [[
@@ -98,7 +98,7 @@ def call (Map config)
                         }
             }*/
 
-           /* stage('SonarQube Analysis')
+            stage('SonarQube Analysis')
                {
                     def scannerHome = tool name:'SonarScanner for MSBuild'
                     withSonarQubeEnv('sonarQube')
@@ -110,8 +110,8 @@ def call (Map config)
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
-  }*/
-                  stage('Quality Gate') 
+  }
+                 /* stage('Quality code analysis') 
                 {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -125,7 +125,7 @@ def call (Map config)
                                     
                             }
                 }
-                }
+                }*/
                                     
             /*stage ('copy all file from BACK')
             {    
