@@ -101,7 +101,7 @@ def call (Map config)
             stage('SonarQube Analysis')
                {
                     def scannerHome = tool name:'SonarScanner for MSBuild'
-                    withSonarQubeEnv('sonarQube')
+                    withSonarQubeEnv('SonarQube')
                     {
                         dir("${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
