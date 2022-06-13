@@ -9,7 +9,7 @@ def call (Map config)
             }
             stage("GitSCM") {
             checkout([$class: 'GitSCM', 
-            branches: [[name: 'refs/heads/main']], 
+            branches: [[name: 'refs/heads/hbr']], 
             userRemoteConfigs: [[
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
