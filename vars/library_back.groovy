@@ -16,18 +16,18 @@ def call (Map config)
                
         ])
          }
-            /*stage('location of dockerfile') 
+           /* stage('location of dockerfile') 
                 {  
                     sh "docker build -t teeeeeest -f ${config.dockerfileLocation} ."
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            /*stage('Container of SonarQube') 
+            stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
-                }*/
+                }
            /*stage('Quality Gate') 
                 {   scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
@@ -98,7 +98,7 @@ def call (Map config)
                         }
             }*/
 
-            stage('SonarQube Analysis')
+            /*stage('SonarQube Analysis')
                {
                     def scannerHome = tool name:'SonarScanner for MSBuild',type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
                     withSonarQubeEnv('sonarQube')
@@ -110,7 +110,7 @@ def call (Map config)
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=682621cc5679231b9b59efbec508d3d80100e441"
                         }
                     }
-  }
+  }*/
                                     
             /*stage ('copy all file from BACK')
             {    
