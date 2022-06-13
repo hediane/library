@@ -9,7 +9,7 @@ def call (Map config)
             }
             stage("GitSCM") {
             checkout([$class: 'GitSCM', 
-            branches: [[name: 'refs/heads/hbr']], 
+            branches: [[name: 'refs/heads/main']], 
             userRemoteConfigs: [[
                 //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
                 url:"${config.scmurl}"]]
@@ -22,12 +22,12 @@ def call (Map config)
                     echo "checking out the source dockerfile "
                     //echo "${config.dockerfileLocation}",
                 }*/
-            stage('Container of SonarQube') 
+            /*stage('Container of SonarQube') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQubeDestintion} up -d"
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
-                }
+                }*/
            /*stage('Quality Gate') 
                 {   scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
@@ -105,9 +105,10 @@ def call (Map config)
                     {
                         dir("${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:aoso /d:sonar.login=a650a854dfc5fdfd835f432b6cbf52f369f6a2b1 "
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:aosohediane /d:sonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51 "
                         sh "dotnet build"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=23b5d4c1c1f76c539f1d0019945228a4003d6a51"
+                        //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
   }
