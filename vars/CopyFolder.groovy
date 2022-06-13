@@ -6,8 +6,7 @@ def call (Map config)
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
-                 sh "ls -la ${p
-                 wd()}/${config.BackPath}"
+                 sh "ls -la ${pwd()}/${config.BackPath}"
                  //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
