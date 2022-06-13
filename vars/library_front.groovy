@@ -52,7 +52,7 @@ def call (Map config)
                     echo "Buid Image with docker-compose sonar "
                     //echo "${config.dockerfileLocation}",
                 }
-         stage('Quality Gate') 
+        /* stage('Quality Gate') 
                 {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('sonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
@@ -66,7 +66,7 @@ def call (Map config)
                                     
                             }
                 }
-                }
+                }*/
            /* stage('location of docker-compose') 
                 {  
                     sh "${config.dockerComposeLocation} -f ${config.DestinationFileFront}/docker-compose-front.yml up -d --build "
