@@ -1,20 +1,5 @@
 def call (Map config)
 {
-    node
-        { 
-            stage('check source scmurl')
-            {
-                echo "checking out the source scmurl "
-                echo "${config.scmurl}"
-            }
-           stage("Checkout") {
-            checkout([$class: 'GitSCM', 
-            branches: [[name: '*/main']], 
-            userRemoteConfigs: [[
-                //refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
-                url:"${config.scmurl}"]]
-        ])
-         }
          
             /*stage('location of dockerfile') 
                 {  
