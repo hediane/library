@@ -2,6 +2,12 @@ def call (Map config)
 {
     node
     {
+         
+        stage('Docker BUILD') 
+                {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} build"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
+                }
+        
         stage('Sonar Quality Analysis')
                {
                     def scannerHome = tool name:'SonarScanner for MSBuild'
