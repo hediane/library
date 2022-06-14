@@ -17,13 +17,12 @@ def call (Map config)
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFile}/Dockerfile"
                  sh "cp -r ${config.DestinationFolder} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}${config.ProjectName}"
+                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationProject}"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
-                 sh "cp -r ${pwd()}${config.dockerComposeSonarQube} ${config.dockerComposeSonarQubeDestintion}"
 
-                 sh "ls -la ${config.DestinationFile}/nginx "
+                 sh "ls -la ${config.DestinationNginx} "
                  sh "ls -la ${config.DestinationFile} "
             }
            
