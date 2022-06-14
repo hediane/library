@@ -6,7 +6,7 @@ def call (Map config)
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
-                 sh "ls -la ${pwd()}/${config.BackPath}"
+        
                  //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
@@ -16,7 +16,7 @@ def call (Map config)
                  //sh "rm -rf ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFile}/Dockerfile"
-                 sh "cp -r ${pwd()}${config.BackPath} ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}${config.ProjectName} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}${config.ProjectName}"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
