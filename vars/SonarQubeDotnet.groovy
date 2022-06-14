@@ -8,7 +8,7 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                 }
         
-        stage('Sonar Quality Analysis')
+        /*stage('Sonar Quality Analysis')
                {
                     def scannerHome = tool name:'SonarScanner for MSBuild'
                     withSonarQubeEnv('SonarQube')
@@ -21,6 +21,6 @@ def call (Map config)
                         //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
-                }
+                }*/
     }
 }
