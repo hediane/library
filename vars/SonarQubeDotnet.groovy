@@ -5,7 +5,7 @@ def call (Map config)
          
         stage('SONAR BUILD') 
                 {   sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d --scale sonarqube=3"
                 }
         
         /*stage('Sonar Quality Analysis')
