@@ -26,11 +26,14 @@ def call (Map config)
             {
                def qualitygate = waitForQualityGate()
                sleep(10)
-
-              if (qualitygate.status != "OK") 
-                {
-                    waitForQualityGate abortPipeline: true     
-                }
+                withSonarQubeEnv('SonarQube')
+                    {
+                        if (qualitygate.status != "OK") 
+                            {
+                                waitForQualityGate abortPipeline: true     
+                            }
+                    }
+              
             }
     }
 }
