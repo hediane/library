@@ -24,9 +24,8 @@ def call (Map config)
                 }
             stage('Quality Gates')
             {
-               def qualitygate = waitForQualityGate()
+               def qualitygate = waitForQualityGate(credentialsId: 'test')
                sleep(10)
-                withSonarQubeEnv('SonarQube')
                     {
                         if (qualitygate.status != "OK") 
                             {
