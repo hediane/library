@@ -27,7 +27,7 @@ def call (Map config)
                 }
             stage("Quality gate") {
 
-                    def qualitygate = waitForQualityGate()
+                    qualitygate = waitForQualityGate()
 
                     if (qualitygate.status != "OK") {
 
