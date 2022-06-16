@@ -6,7 +6,7 @@ def call (Map config)
             {   def scannerHome = tool name: 'sonarscanner';
                     withSonarQubeEnv('SonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
-                            dir("${config.FrontPath}") {
+                            dir("${config.ProjectName}") {
                                     sh " ls -la ${pwd()}"
                                     //sh "dotnet ${scannerHome}/bin/sonar-scanner  /k:AosoFront /d:sonar.host.url= http://192.168.56.113:9000"
                                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Front -Dsonar.login=eb77d83ff776ed7e511ccb6f98db5163f1af4f9f "
