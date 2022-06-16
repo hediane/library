@@ -4,7 +4,7 @@ def call (Map config)
     {
        stage('Quality Gate') 
             {   def scannerHome = tool name: 'sonarscanner';
-                    withSonarQubeEnv('sonarQube') {
+                    withSonarQubeEnv('SonarQube') {
                     //sh "dotnet restore source/DevOpsProject/DevOpsProject/DevOpsProject.csproj"
                             dir("${config.FrontPath}") {
                                     sh " ls -la ${pwd()}"
