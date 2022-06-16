@@ -27,13 +27,9 @@ def call (Map config)
                 }
             stage("Quality gate") {
 
+                    def qualitygate = waitForQualityGate();
 
-                    if (qualitygate.status != "OK") {
-
-                        error "pipeline abord"
-                        }
-                        //
-
+                    
 }
     }
 }
