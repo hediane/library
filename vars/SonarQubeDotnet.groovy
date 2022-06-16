@@ -10,8 +10,7 @@ def call (Map config)
     
         stage('Sonar Quality Analysis')
                {    
-                   if (DevValidator)
-                   {
+                  
                     def scannerHome = tool name:'SonarScanner for MSBuild'
                     withSonarQubeEnv('SonarQube')
                     {
@@ -23,9 +22,8 @@ def call (Map config)
                         //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
-                   }
-                   else 
-                       echo"Don't have access"
+                   
+                   
                 }
             stage('Quality Gates')
             {
