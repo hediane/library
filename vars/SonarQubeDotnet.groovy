@@ -30,7 +30,7 @@ def call (Map config)
                     
                     withSonarQubeEnv('SonarQube')
                     {
-                        def qualitygate = waitForQualityGate();
+                        def qualitygate = waitForQualityGate('SonarQube');
                     }
 
                     
