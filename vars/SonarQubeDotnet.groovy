@@ -25,11 +25,17 @@ def call (Map config)
                    
                    
                 }
-            stage('Quality Gates')
-            {
-               
-                waitForQualityGate abortPipeline: true        
-              
-            }
+            stage("Quality gate") {
+
+                        def qualitygate = waitForQualityGate(webhookSecretId: 'test2')
+
+                        sleep(10)
+
+                        if (qualitygate.status != "OK") {
+
+                        waitForQualityGate abortPipeline: true
+                        }
+
+}
     }
 }
