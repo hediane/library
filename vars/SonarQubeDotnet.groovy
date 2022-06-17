@@ -3,11 +3,11 @@ def call (Map config)
     node
     {
          
-        stage('SONAR BUILD') 
+       /* stage('SONAR BUILD') 
                 {  sh"ls -a scripts/Back"
                      //sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
-                }
+                }*/
     
         stage('Sonar Quality Analysis')
                {    
