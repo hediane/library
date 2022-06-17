@@ -3,10 +3,10 @@ def call (Map config)
     node
     {
          
-        /*stage('SONAR BUILD') 
-                {   sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
+        stage('SONAR BUILD') 
+                {   //sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
-                }*/
+                }
     
         stage('Sonar Quality Analysis')
                {    
@@ -27,7 +27,6 @@ def call (Map config)
                 }
             stage("Quality gate") {
 
-                    
                     withSonarQubeEnv('SonarQube')
                     {
                         def qualitygate = waitForQualityGate('SonarQube');

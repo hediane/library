@@ -8,15 +8,6 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                 }*/
         
-        stage('Quality Gates')
-            {
-               def qualitygate = waitForQualityGate()
-               sleep(10)
-
-              if (qualitygate.status != "OK") 
-                {
-                    waitForQualityGate abortPipeline: true     
-                }
-            }
+        
     }
 }
