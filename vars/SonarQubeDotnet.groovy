@@ -29,7 +29,7 @@ def call (Map config)
             stage("Quality gate") {
 
                         def qualitygate = waitForQualityGate()
-                        withSonarQubeEnv('SonarQube')
+                        withSonarQubeEnv(credentialsId: 'test2')
                             {
                         sleep(10)
 
