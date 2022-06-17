@@ -26,14 +26,18 @@ def call (Map config)
                    
                    
                 }
-            /*stage("Quality gate") {
+            stage("Quality gate") {
 
-                    withSonarQubeEnv('SonarQube')
-                    {
-                        def qualitygate = waitForQualityGate('SonarQube');
-                    }
+                        def qualitygate = waitForQualityGate()
 
-                    
-}*/
+                        sleep(10)
+
+                        if (qualitygate.status != "OK") {
+
+                                    waitForQualityGate abortPipeline: true
+
+}
+
+}   
     }
 }
