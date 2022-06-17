@@ -29,7 +29,8 @@ def call (Map config)
             stage("Quality gate") {
 
                         def qualitygate = waitForQualityGate()
-
+                        withSonarQubeEnv('SonarQube')
+                            {
                         sleep(10)
 
                         if (qualitygate.status != "OK") {
@@ -37,6 +38,7 @@ def call (Map config)
                                     waitForQualityGate abortPipeline: true
 
 }
+                            }
 
 }   
     }
