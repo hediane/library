@@ -4,7 +4,8 @@ def call (Map config)
     {
          
         stage('SONAR BUILD') 
-                {   //sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
+                {  sh"ls -a scripts/Back"
+                     //sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} build"
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                 }
     
