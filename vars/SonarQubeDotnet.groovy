@@ -26,7 +26,7 @@ def call (Map config)
                    
                    
                 }
-            stage("Quality gate") {
+            /*stage("Quality gate") {
 
                     withSonarQubeEnv('SonarQube')
                     {
@@ -34,6 +34,6 @@ def call (Map config)
                     }
 
                     
-}
+}*/
     }
 }
