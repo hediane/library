@@ -33,11 +33,13 @@ def call (Map config)
                     if (qualitygate.status != "OK")
                             {
 
-                               echo "WAIT WAIT WAIT  !!"
+                               echo "WAIT WAIT WAIT APP FAILURE !!"
                                waitForQualityGate abortPipeline: true     
-
-
                             } 
+                    else 
+                            {
+                                echo "YOUR APP IS READY TO DEPLOY  !!"
+                            }
                     
             }
             
