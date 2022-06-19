@@ -29,15 +29,14 @@ def call (Map config)
             stage("Quality gate")
             {
                 def qualitygate = waitForQualityGate()
-                withSonarQubeEnv('SonarQube')
-                    {
+
                     if (qualitygate.status != "OK")
                             {
 
                             echo 'stop'
 
                             } 
-                    }
+                    
             }
             
 
