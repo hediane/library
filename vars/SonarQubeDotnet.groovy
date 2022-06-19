@@ -28,7 +28,17 @@ def call (Map config)
                 }
             stage("Quality gate")
             {
-                waitForQualityGate abortPipeline: true     
+                def qualitygate = waitForQualityGate()
+
+                    if (qualitygate.status != "OK")
+                            {
+
+                               echo "WAIT WAIT WAIT  !!"
+                               waitForQualityGate abortPipeline: true     
+
+
+                            } 
+                    
             }
             
 
