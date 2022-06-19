@@ -27,10 +27,11 @@ def call (Map config)
                    
                 }
             stage("Quality gate") {
-
+                withSonarQubeEnv('SonarQube')
+                    {
                 waitForQualityGate abortPipeline: true
 
-                                        }
+                                        }}
                             
   
     }
