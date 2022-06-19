@@ -34,7 +34,7 @@ def call (Map config)
                     if (qualitygate.status != "OK")
                             {
 
-                            waitForQualityGate abortPipeline: true
+                            echo 'stop'
 
                             } 
                     }
