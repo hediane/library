@@ -33,7 +33,7 @@ def call (Map config)
                     if (qualitygate.status != "OK")
                             {
 
-                            echo 'stop'
+                               echo "stop"
 
                             } 
                     
