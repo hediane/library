@@ -28,9 +28,9 @@ def call (Map config)
                                             
                                 }*/
                      if ("${config.devValidator}".contains("${user}"))
-                    {  env.APPROVED_DEPLOY == input (id: 'someId',message: 'Do you want to approve the deploy in production?',
+                    {  APPROVED_DEPLOY == input (id: 'someId',message: 'Do you want to approve the deploy in production?',
                             parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME DEPLOY APP', name: 'some name')])   
-                        if(env.APPROVED_DEPLOY == 'Yes')
+                        if(APPROVED_DEPLOY == 'Yes')
                             {
                                 sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
  
