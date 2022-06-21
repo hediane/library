@@ -9,7 +9,7 @@ def call (Map config)
                     sh "${config.dockerComposeLocation} -f ${config.dockerComposeSonarQube} up -d"
                 }*/
     
-        stage('Sonar Quality Analysis')
+        stage('SONAR QUALITY ANALYSIS')
                {    
                   
                     def scannerHome = tool name:'SonarScanner for MSBuild'
@@ -26,7 +26,7 @@ def call (Map config)
                    
                    
                 }
-            stage("Quality gate")
+            stage("QUALITY GATE")
             {
                 def qualitygate = waitForQualityGate()
 
