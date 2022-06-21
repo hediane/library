@@ -29,21 +29,21 @@ def call (Map config)
                                 }*/
                      if ("${config.devValidator}".contains("${user}"))
                     {     
-                        if(input (id: 'someId',message: 'Approve?',
-                            parameters: [choice( choices: ['No', 'Yes'], description: 'some description', name: 'some name')]) == 'Yes')
+                        if(input (id: 'someId',message: 'Do you want to approve the deploy in production?',
+                            parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME DEPLOY APP', name: 'some name')]) == 'Yes')
                             {
                                 sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
  
                             }
                         else 
                         {
-                            echo "attention"
+                            input message: "ABORD"
                         }
                     
                     }
                     else 
                      {
-                        input message: "sorry you don't have access?"
+                        input message: "SORRY YOU DON'T HAVE ACCESS"
                      }
                 }
             }
