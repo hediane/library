@@ -29,7 +29,7 @@ def call (Map config)
                                 }*/
                      if ("${config.devValidator}".contains("${user}"))
                     {     
-                        if(input (id: 'someId',message: 'Approve?'),
+                        if(input (id: 'someId',message: 'Approve?',
                             parameters: [choice( choices: ['No', 'Yes'], description: 'some description', name: 'some name')]) == 'Yes')
                             {
                                 sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
