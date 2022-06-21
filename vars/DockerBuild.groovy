@@ -19,7 +19,7 @@ def call (Map config)
                         //slackSend color: 'danger', channel: '#devops', message: "<${currentBuild.absoluteUrl}|Server build ${env.BUILD_NUMBER}> failed to deploy build "
 	                       
                             //input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
-                            isApproved = input(id: 'someId',message: 'Approve?', submitter: 'someuser',
+                            isApproved = input(id: 'someId',message: 'Approve?', submitter: "${config.devValidator}",
                             parameters: [choice( 
                                         choices: ['No', 'Yes'],
                                         description: 'some description',
