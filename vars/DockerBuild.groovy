@@ -16,9 +16,9 @@ def call (Map config)
                     else
                     {    
                         //slackSend color: 'danger', channel: '#devops', message: "<${currentBuild.absoluteUrl}|Server build ${env.BUILD_NUMBER}> failed to deploy build "
-	                       timeout(time: 2, unit: “HOURS”) {
-                                input message: 'Approve Deploy?', ok: 'Yes'
-                                    }
+	                       
+                            input message: 'Approve Deploy?', ok: 'Yes'
+                             
                     }
                  }
                 }
