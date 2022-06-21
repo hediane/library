@@ -26,7 +26,7 @@ def call (Map config)
                  sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.dockerComposeNexus} ${config.DestinationFile}"
                  sh "ls -la ${config.DestinationNginx} "
-                sh "ls -la /srv/aoso/DevOps/backend/nexus"
+                s//h "ls -la /srv/aoso/DevOps/backend/nexus"
                  sh "ls -la ${config.DestinationFile} "
                  
             }
