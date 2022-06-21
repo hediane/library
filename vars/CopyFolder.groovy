@@ -9,7 +9,7 @@ def call (Map config)
         
                  //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
-                 sh"rm -rf /srv/aoso/DevOps/backend/nexus"
+                 sh"rm -rf /srv/aoso/DevOps/backend/Nexus"
                  sh "ls -a /srv/aoso/DevOps/backend/"
                  //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
                 sh "ls -a ${config.DestinationFolder1}"
