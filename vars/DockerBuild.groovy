@@ -27,8 +27,8 @@ def call (Map config)
                                 ) == 'Yes')
                                             
                                 }*/
-                            def isApproved;
-                        if( isApproved == input(id: 'someId',message: 'Approve?', submitter: "${config.devValidator}.contains('${user}')",
+                          
+                        if(input (id: 'someId',message: 'Approve?', submitter: "${config.devValidator}.contains('${user}')",
                             parameters: [choice( 
                                         choices: ['No', 'Yes'],
                                         description: 'some description',
