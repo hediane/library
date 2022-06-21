@@ -18,12 +18,14 @@ def call (Map config)
                  //sh "rm -rf ${config.DestinationFile}/Dockerfile"
                  sh "cp -r ${config.DestinationFolder} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationProject}"
+                 sh "ls -la ${config.DestinationProject} "
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}${config.dockerComposeNexus} ${config.dockerComposeNexusDestination}"
                  sh "ls -la ${config.DestinationNginx} "
                  sh "ls -la ${config.DestinationFile} "
+                 
             }
            
 
