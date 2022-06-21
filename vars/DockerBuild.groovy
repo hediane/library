@@ -27,13 +27,10 @@ def call (Map config)
                                 ) == 'Yes')
                                             
                                 }*/
-                          
-                        if(input (id: 'someId',message: 'Approve?', submitter: "${config.devValidator}.contains('${user}')",
-                            parameters: [choice( 
-                                        choices: ['No', 'Yes'],
-                                        description: 'some description',
-                                        name: 'some name')]
-                                ) == 'Yes')
+                     if ("${config.devValidator}".contains("${user}"))
+                    {     
+                        if(input (id: 'someId',message: 'Approve?'),
+                            parameters: [choice( choices: ['No', 'Yes'], description: 'some description', name: 'some name')]) == 'Yes')
                             {
                                 sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
  
@@ -44,7 +41,12 @@ def call (Map config)
                         }
                     
                     }
+                    else 
+                     {
+                        input message: "sorry you don't have access?"
+                     }
                 }
+            }
 
         }
            
