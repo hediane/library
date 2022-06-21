@@ -14,10 +14,11 @@ def call (Map config)
                        sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
                     }
                     else
-                    {
-                           
+                    {    
                         //slackSend color: 'danger', channel: '#devops', message: "<${currentBuild.absoluteUrl}|Server build ${env.BUILD_NUMBER}> failed to deploy build "
-	                       echo"Don't have access"
+	                       timeout(time: 2, unit: “HOURS”) {
+                                input message: ‘Approve Deploy?’, ok: ‘Yes’
+                                    }
                     }
                  }
                 }
