@@ -6,9 +6,9 @@ def call (Map config)
                         stage('Packing') 
 
                         {
-                            
+                            sh "mkdir -p target"
                             sh "cd ${config.dist}"
-                            sh 'npm pack'
+                            sh 'npm pack /target'
                              sh 'ls -a'
                             sh "ls -a ${config.dist}"
 
