@@ -6,7 +6,7 @@ def call (Map config)
                 stage('Packing') 
                 {  
                     sh 'ng build'
-                    sh 'cd dist/DevOpsFront'
+                    sh "cd ${config.dist}"
                     sh 'npm pack'
 
                 }
