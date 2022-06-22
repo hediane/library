@@ -12,7 +12,7 @@ def call (Map config)
                 
                     dir("${config.ProjectName}") 
                     {
-                         sh 'dotnet pack --no-build --output nupkgs'
+                         sh 'dotnet pack '
                     }
                 }
         }
