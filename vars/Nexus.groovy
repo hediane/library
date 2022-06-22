@@ -2,7 +2,7 @@ def call (Map config)
 {
     node
         {
-            stage('Packing') 
+            dir("${config.ProjectName}") {
                 stage('Packing') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
                     //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
@@ -25,5 +25,6 @@ def call (Map config)
                     
                 
                 }
+        }
         }
 }
