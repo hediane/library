@@ -2,7 +2,7 @@ def call (Map config)
 {
     node
         {
-            dir("${config.ProjectName}") {
+            dir("/var/jenkins_home/workspace/Front_main/source/DevOpsFront") {
                         stage('Packing') 
 
                         {
