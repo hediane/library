@@ -9,6 +9,7 @@ def call (Map config)
                             
                             sh "cd ${config.dist}"
                             sh 'npm pack'
+                            sh "ls -a ${config.dist}"
 
                         }
             }
