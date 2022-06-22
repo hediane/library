@@ -4,7 +4,7 @@ def call (Map config)
         {
     
                 stage('Packing') 
-                {  
+                {  sh 'npm install -g @angular/cli@latest'
                     sh 'ng build'
                     sh "cd ${config.dist}"
                     sh 'npm pack'
