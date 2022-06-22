@@ -5,8 +5,7 @@ def call (Map config)
     
                 stage('Packing') 
 
-                {   sh 'apt-get install npm'
-                    sh 'npm install -g @angular/cli@latest'
+                {
                     sh 'ng build'
                     sh "cd ${config.dist}"
                     sh 'npm pack'
