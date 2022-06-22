@@ -5,7 +5,7 @@ def call (Map config)
     
                 stage('Packing') 
                 {  //sh "${config.dockerComposeLocation} -f ${config.dockerComposeElasticDestintination} build "
-                    //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
+                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
                     //echo "Buid Image with docker-compose"
                     //echo "${config.dockerfileLocation}",
                    sh "dotnet pack ${config.ProjectName}"
