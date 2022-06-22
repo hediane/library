@@ -17,9 +17,9 @@ def call (Map config)
                     {
                         dir("${config.ProjectName}") {
                         sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:Back /d:sonar.login=eb77d83ff776ed7e511ccb6f98db5163f1af4f9f "
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:Back /d:sonar.login=580029abd6076347f7f7115089508a365415fef3 "
                         sh "dotnet build"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=eb77d83ff776ed7e511ccb6f98db5163f1af4f9f"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=580029abd6076347f7f7115089508a365415fef3"
                         //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
