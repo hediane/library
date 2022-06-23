@@ -5,7 +5,7 @@ def call (Map config)
         {
             env
                     {
-                        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                        NPM_TOKEN: ${secrets.NPM_TOKEN}
                     }
             dir("/var/jenkins_home/workspace/Front_main/source/DevOpsFront") {
                         stage('Packing') 
