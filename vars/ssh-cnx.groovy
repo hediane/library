@@ -7,19 +7,20 @@ import java.util.Properties
 
 
 
-def sshHost = '119.168.56.115'
-def sshUser = 'hediane'
-def sshPass = '123456'
-def sshPort = 22
 
-def localHost = '119.168.56.115'
-
-def targetHost = '87.106.205.95'
-def targetUser = 'root'
-def targetPass = ''
-def targetPort = 22
 def call (Map config)
-{
+{ 
+    def sshHost = '119.168.56.115'
+    def sshUser = 'hediane'
+    def sshPass = '123456'
+    def sshPort = 22
+
+    def localHost = '119.168.56.115'
+
+    def targetHost = '87.106.205.95'
+    def targetUser = 'root'
+    def targetPass = ''
+    def targetPort = 22
     node
         {
             stage('Opening connection ') 
