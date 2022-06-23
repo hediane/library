@@ -8,7 +8,6 @@ def call (Map config)
                         stage('Packing') 
 
                         {
-                            
                             sh "cd ${config.dist}"
                             sh 'npm pack'
                              sh 'ls -a'
