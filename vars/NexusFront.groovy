@@ -25,7 +25,9 @@ def call (Map config)
                    //sh 'npm install --no-package-lock'
                    //sh "npm adduser --registry=http://192.168.56.115:8081/repository/aosoFront/ --always-auth"
                   //sh "npm login --registry=http://192.168.56.115:8081/repository/aosoFront/ publish /var/jenkins_home/workspace/Front_main/source/DevOpsFront/dev-ops-front-0.0.0.tgz"
-                
+                    sh "npm login --registry http://192.168.56.115:8081/repository/aosoFront/"
+                    sh 'ng build'
+                    sh "npm publish /var/jenkins_home/workspace/Front_main/source/DevOpsFront/dev-ops-front-0.0.0.tgz"
                 }
         }
         }
