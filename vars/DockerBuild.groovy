@@ -4,6 +4,7 @@ def call (Map config)
         { 
             stage('DEPLOY APP ') 
                 {  
+                   
                     wrap([$class: 'BuildUser']) {
                     def user = env.BUILD_USER_ID
                     //echo "${user}"
@@ -27,6 +28,7 @@ def call (Map config)
                                 ) == 'Yes')
                                             
                                 }*/
+                        
                      if ("${config.devValidator}".contains("${user}"))
                     {     
                         if(input (id: 'someId',message: 'Do you want to approve the deploy in production?',
