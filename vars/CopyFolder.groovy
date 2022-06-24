@@ -6,11 +6,15 @@ def call (Map config)
             {    
                  sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
+        
+                 //sh "cd /var/jenkins_home/workspace/"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
+                 sh"rm -rf /srv/aoso/DevOps/backend/Nexus"
                  sh "ls -a /srv/aoso/DevOps/backend/"
-                //sh "ls -a ${config.DestinationFolder1}"
-                //sh "ls -a ${config.DestinationFolder2}"
-                //sh "ls -a ${config.DestinationFile}"
+                 //sh "rm -rf /var/jenkins_home/workspace/aoso/DevOps/back"
+                sh "ls -a ${config.DestinationFolder1}"
+                sh "ls -a ${config.DestinationFolder2}"
+                sh "ls -a ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}/source/DevOpsProject ${config.DestinationFile}"
                  //sh "rm -rf ${config.DestinationFile}/Dockerfile"
