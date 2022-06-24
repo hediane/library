@@ -5,7 +5,7 @@ def call (Map config)
     
                 stage('Packing') 
                 {  
-                    sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
+                    //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
                    sh "dotnet pack ${config.ProjectName}"
                    sh "ls -a /var/jenkins_home/workspace/Back_main/source/DevOpsProject/bin/Debug/"
                     //sh 'dotnet clean'
