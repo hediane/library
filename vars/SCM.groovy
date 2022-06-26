@@ -18,7 +18,7 @@ def call (Map config)
                     sh 'dotnet build "Back/scripts/DevOpsProject/DevOpsProject.csproj"'
                 }
             stage("publish") {
-                   sh 'dotnet publish "Back/scripts/DevOpsProject/DevOpsProject.csproj"
+                   sh 'dotnet publish "Back/scripts/DevOpsProject/DevOpsProject.csproj" '
                 }
         }
 }
