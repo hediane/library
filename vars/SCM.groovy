@@ -12,7 +12,7 @@ def call (Map config)
             ])
                 }
             stage("restore") {
-                    sh 'dotnet restore "Back/scripts/DevOpsProject/DevOpsProject.csproj"'
+                    sh 'dotnet restore "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj"'
                 }
             stage("build") {
                     sh 'dotnet build "Back/scripts/DevOpsProject/DevOpsProject.csproj"'
