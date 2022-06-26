@@ -1,0 +1,14 @@
+def call (Map config)
+{
+    node
+        {
+    
+                stage('Test unitaire') 
+                {  
+                    sh 'dotnet test --logger:"trx;logFileName=report.xml" DevOpsProject/DevOpsProject.sln'
+               
+                }
+            
+        }
+        
+}
