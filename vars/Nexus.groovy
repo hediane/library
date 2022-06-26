@@ -7,7 +7,7 @@ def call (Map config)
                 {  
                    
                 //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
-                   sh "dotnet pack ${config.ProjectName}"
+                   sh "dotnet pack ${config.ProjectPack}"
                    sh "ls -a /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Debug/"
                    sh "ls -a /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Debug/aosora.1.0.0.nupkg"
                     //sh 'dotnet clean'
