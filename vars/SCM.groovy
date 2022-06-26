@@ -15,10 +15,10 @@ def call (Map config)
                     sh 'dotnet restore "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj"'
                 }
             stage("build") {
-                    sh 'dotnet build "Back/scripts/DevOpsProject/DevOpsProject.csproj"'
+                    sh 'dotnet build "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj"'
                 }
             stage("publish") {
-                   sh 'dotnet publish "Back/scripts/DevOpsProject/DevOpsProject.csproj" '
+                   sh 'dotnet publish "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj" '
                 }
         }
 }
