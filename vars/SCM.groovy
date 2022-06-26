@@ -11,5 +11,14 @@ def call (Map config)
                
             ])
                 }
+            stage("restore") {
+                    dotnet restore "Back/scripts/DevOpsProject/DevOpsProject.csproj"
+                }
+            stage("build") {
+                    dotnet build "Back/scripts/DevOpsProject/DevOpsProject.csproj"
+                }
+            stage("publish") {
+                    dotnet publish "Back/scripts/DevOpsProject/DevOpsProject.csproj"
+                }
         }
 }
