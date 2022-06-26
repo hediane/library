@@ -5,7 +5,7 @@ def call (Map config)
     
                 stage('Test unitaire') 
                 {  
-                    sh 'dotnet test --logger:"trx;logFileName=report.xml" DevOpsProject/DevOpsProject.sln'
+                    sh 'dotnet test --logger:"trx;logFileName=report.xml" source/DevOpsProject/DevOpsProject/DevOpsProject.sln'
                
                 }
             
