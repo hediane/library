@@ -2,14 +2,14 @@ def call (Map config)
 {
     node
         {
-        dir("/var/lib/jenkins/workspace/Back_main/source/DevOpsProject")
+        dir("source/DevOpsProject")
              {   stage('Packing') 
                 {  
                    
                 //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
                    sh 'dotnet clean'
                    sh 'dotnet build --configuration Release'
-                   sh "dotnet pack  /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Release/net5.0/ --no-build --output nupkgs"
+                   sh "dotnet pack --no-build --output nupkgs"
                    //sh "ls -a /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Debug/"
                    //sh "ls -a /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Debug/aosora.1.0.0.nupkg"
                     //sh 'dotnet clean'
