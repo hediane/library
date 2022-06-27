@@ -7,7 +7,6 @@ def call (Map config)
                 {  
                    
                 //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
-                   sh 'dotnet clean'
                    sh 'dotnet build --configuration Release'
                    sh "dotnet pack --no-build --output nupkgs"
                    //sh "ls -a /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Debug/"
