@@ -9,7 +9,7 @@ def call (Map config)
                     def scannerHome = tool name:'SonarScanner for MSBuild'
                     withSonarQubeEnv('SonarQube')
                     {
-                        dir("${config.ProjectName}") {
+                        dir("${config.ProjectPack1}") {
                         sh " ls -la ${pwd()}"
                         sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:Back /d:sonar.login=580029abd6076347f7f7115089508a365415fef3 "
                         sh "dotnet build"
