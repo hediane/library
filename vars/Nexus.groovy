@@ -2,7 +2,7 @@ def call (Map config)
 {
     node
         {
-        dir("/var/lib/jenkins/workspace/Back_main/source/DevOpsProject")
+        dir("/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/bin/Release")
              {   stage('Packing') 
                 {  
                    
