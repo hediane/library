@@ -34,7 +34,7 @@ def call (Map config)
                         if(input (id: 'someId',message: 'Do you want to approve the deploy in production?',
                             parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME', name: 'some name')]) == 'Yes')
                             {
-                                sh "sudo ${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+                                sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
  
                             }
                         else 
