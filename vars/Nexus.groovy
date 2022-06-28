@@ -2,7 +2,6 @@ def call (Map config)
 {
     node
         {
-        dir("/var/lib/jenkins/workspace/Back_main/source/DevOpsProject")
              { /*  stage('Packing') 
                 {  
                    
@@ -20,10 +19,11 @@ def call (Map config)
                 { 
                  //sh "dotnet nuget push /var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj -s http://192.168.56.115:8081/repository/nuget-hosted/ -k 5f15c27d-1f8a-3baa-a136-cd624ba7c9b7 "
                 //sh 'dotnet nuget push **\\nupkgs\\*.nupkg -s http://192.168.56.115:8081/repository/nuget-hosted/ -k 5f15c27d-1f8a-3baa-a136-cd624ba7c9b7 '
-                    sh '${config.dockerLocation} push 192.168.56.115:8081/backend_backend'
+                    sh "docker tag f46673abf4fe http://192.168.56.115:8081/repository/nexus_docker/backend_backend:mytag"
+                    sh 'docker push http://192.168.56.115:8081/repository/nexus_docker/backend_backend:mytag'
                 
          
                     }       }
-        }
+        
         
 }
