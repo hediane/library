@@ -2,7 +2,7 @@ def call (Map config)
 {
     node
         {
-             { /*  stage('Packing') 
+            /* {   stage('Packing') 
                 {  
                    
                 //sh "${config.dockerComposeLocation} -f ${config.dockerComposeNexusDestination} up -d"
