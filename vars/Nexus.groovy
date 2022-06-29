@@ -22,7 +22,7 @@ def call (Map config)
                     sh 'docker build -t backend_backend .'
                     sh 'docker login http://192.168.56.115:8082/repository/nexus_docker/"'
                     sh 'docker tag backend_backend http://192.168.56.115:8082/repository/nexus_docker/backend_backend:latest"'
-                    sh 'docker push http://192.168.56.115:8082/repository/nexus_docker/backend_backend:latest''
+                    sh "docker push http://192.168.56.115:8082/repository/nexus_docker/backend_backend:latest'"
                 
                   
          
