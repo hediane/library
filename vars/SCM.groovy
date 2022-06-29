@@ -22,7 +22,7 @@ def call (Map config)
         stage('push image in nexus'){      
                 //def version = "latest"
                 //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
-                docker.withRegistry( 'http://nexus_docker', 'cnx_nexus' ) { 
+                docker.withRegistry( 'http://nexus-udd', 'cnx_nexus' ) { 
                     dockerImage.push() 
                 } 
     }
