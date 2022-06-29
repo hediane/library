@@ -1,5 +1,5 @@
 def call (Map config)
-{
+{ 
     node
         { 
             stage("GitSCM") {
@@ -11,18 +11,15 @@ def call (Map config)
                
             ])
         }
-             stage("ssh_cnx") {
-                    sh 'touch tsthediane' 
-                    sh 'scp tsthediane root@87.106.205.95:/srv'
-                }
-            stage("restore") {
-                    sh 'dotnet restore "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj"'
-                }
-            stage("build") {
-                    sh 'dotnet build "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj"'
-                }
-            stage("publish") {
-                   sh 'dotnet publish "/var/lib/jenkins/workspace/Back_main/source/DevOpsProject/DevOpsProject.csproj" '
-                }
+
+        stage('Creating our image'){      
+            script { 
+                def version = "latest"
+                docker build -f "${config.Dockerfile}" -t "nexus_docker/aoso" + ":$version"
+                //dockerImage = docker.build "nexus_docker/aoso" + ":$version" 
+        }
+        
+    }
+             
         }
 }
