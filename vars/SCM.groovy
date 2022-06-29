@@ -14,8 +14,8 @@ def call (Map config)
 
         stage('Creating our image'){      
                 //def version = "latest"
-                sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
-                //dockerImage = docker.build "nexus_docker/aoso" + ":$version" 
+                //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
+                dockerImage = docker.build "nexus_docker/aoso" + ":latest" 
         
     }
              
