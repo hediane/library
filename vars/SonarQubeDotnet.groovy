@@ -17,10 +17,26 @@ def call (Map config)
                         //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
                         }
                     }
-                   
-                   
-                }
-            
+                stage("QUALITY GATE")
+                        {
+                            def qualitygate = waitForQualityGate()
+
+                                if (qualitygate.status != "OK")
+                                        {
+
+                                        input message: "CHECK YOUR QUALITY GATE"
+                                        waitForQualityGate abortPipeline: true     
+                                        } 
+                                else 
+                                        {
+                                        input message: "YOUR APP IS READY TO PACKGING"
+                                        }
+                                
+                        }
+                            
+                            
+                            }
+                        
             
 
  
