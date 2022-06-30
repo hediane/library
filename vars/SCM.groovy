@@ -16,7 +16,7 @@ def call (Map config)
                 //def version = "latest"
                 //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
                 dir("${config.Dockerfile}"){
-                dockerImage = docker.build "nexus_docker/aoso" + ":latest" 
+                dockerImage = docker.build "nexus-udd/aoso" + ":latest" 
         }
     }
         stage('push image in nexus'){      
