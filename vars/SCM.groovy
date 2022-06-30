@@ -12,20 +12,5 @@ def call (Map config)
             ])
         }
 
-        stage('Creating our image'){      
-                //def version = "latest"
-                //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
-                dir("${config.Dockerfile}"){
-                dockerImage = docker.build "nexus-udd/aoso" + ":latest" 
-        }
-    }
-        stage('push image in nexus'){      
-                //def version = "latest"
-                //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
-                docker.withRegistry( 'http://192.168.56.115:8082/repository/nexus-udd', 'nexus-udd' ) { 
-                    dockerImage.push() 
-                } 
-    }
-             
-        }
+        
 }
