@@ -16,7 +16,7 @@ def call (Map config)
                             }
                 }
             }
-         stage("QUALITY GATE")
+        /* stage("QUALITY GATE")
             {
                 def qualitygate = waitForQualityGate()
 
@@ -31,6 +31,6 @@ def call (Map config)
                              input message: "YOUR APP IS READY TO PACKGING"
                             }
                     
-            }
+            }*/
     }
 }
