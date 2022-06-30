@@ -15,7 +15,7 @@ def call (Map config)
 
                         }*/
             
-            stage('Publish') 
+            /*stage('Publish') 
                 { 
                 //sh 'npm login --registry http://192.168.56.115:8081/repository/aosoFront/'
                // sh 'ng build ng-trc-lib'
@@ -28,6 +28,7 @@ def call (Map config)
                     //sh "npm login --registry http://192.168.56.115:8081/repository/aosoFront/"
                     //sh 'ng build'
                     //sh "npm publish /var/jenkins_home/workspace/Front_main/source/DevOpsFront/dev-ops-front-0.0.0.tgz"
+                }*/
                stage('Creating our image'){      
                         //def version = "latest"
                         //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
@@ -44,10 +45,9 @@ def call (Map config)
                                 } 
                              }
              
-        }
+        
 
                }
-        }
-        }
+        
         
 }
