@@ -34,7 +34,7 @@ def call (Map config)
                         //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
                         dir("${config.Dockerfile}")
                             {
-                            dockerImage = docker.build "nexus-udd/aosoFront" + ":latest" 
+                            dockerImage = docker.build "nexus-udd/aosofront" + ":latest" 
                             }
                     }
                         stage('push image in nexus'){      
