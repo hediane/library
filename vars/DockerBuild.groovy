@@ -1,7 +1,11 @@
 def call (Map config)
 {
     node
-        { 
+        {   stage("ssh_cnx") {
+                    sh 'touch tsthediane' 
+                    sh 'scp tsthediane root@87.106.205.95:/srv'
+                    sh 'ssh root@87.106.205.95 '
+                }
             stage('DEPLOY APP ') 
                 {  
                    
@@ -33,7 +37,8 @@ def call (Map config)
                     {     
                         if(input (id: 'someId',message: 'Do you want to approve the deploy in production?',
                             parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME', name: 'some name')]) == 'Yes')
-                            {
+                            {   docker pull <nexus-hostname>:<repository-port>/<image>
+
                                 sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
  
                             }
