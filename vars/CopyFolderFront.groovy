@@ -15,6 +15,8 @@ def call (Map config)
                 sh "ls -a ${config.DestinationFile}"
                 sh "cp -r ${config.DestinationFolder} ${config.DestinationFile}"
                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationProject}"
+                sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFile}"
+                sh "ls -a ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  //sh "cp -r ${pwd()}${config.elasticsearch} ${config.DestinationFile}"
