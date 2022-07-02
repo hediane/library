@@ -4,7 +4,7 @@ def call (Map config)
         {   stage("ssh_cnx") {
                     sh 'touch tsthediane' 
                     sh 'scp tsthediane root@87.106.205.95:/srv'
-                    sh 'ssh root@87.106.205.95 '
+                    sh 'sudo ssh root@87.106.205.95 docker ps  '
                 }
             stage('DEPLOY APP ') 
                 {  
