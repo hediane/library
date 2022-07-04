@@ -20,6 +20,7 @@ def call (Map config)
                         //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
                         dir("${config.Dockerfile}")
                             {
+                            sh "ls -a"
                             dockerImage = docker.build "image-back/aoso" + ":latest" 
                             }
                     }
