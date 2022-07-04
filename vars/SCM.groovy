@@ -12,6 +12,7 @@ def call (Map config)
                 url:"${config.scmurl}"]]
                
             ])
+            sh "ls -a"
         }
         }
     
