@@ -35,8 +35,8 @@ def call (Map config)
                             parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME', name: 'some name')]) == 'Yes')
                             {   
 
-                               // sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
-                                sh "ssh root@87.106.205.95 docker ps"
+                               sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
+                               // sh "ssh root@87.106.205.95 docker ps"
                             }
                         else 
                         {
