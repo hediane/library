@@ -6,7 +6,7 @@ def call (Map config)
         stage('SONAR QUALITY ANALYSIS')
                {    
                   
-                    def scannerHome = tool name:'SonarScanner for MSBuild', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
+                    def scannerHome = tool name:'SonarScanner for MSBuild'
                     withSonarQubeEnv('SonarQube')
                     {
                         dir("${config.ProjectPack1}") {
