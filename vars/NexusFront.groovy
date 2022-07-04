@@ -36,6 +36,7 @@ def call (Map config)
                             {
                             dockerImage = docker.build "image-front/aoso" + ":latest" 
                             }
+                        
                     }
                         stage('push image in nexus'){      
                                 //def version = "latest"
