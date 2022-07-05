@@ -2,9 +2,7 @@ def call (Map config)
 {
     node
         {  
-        stages("deploy")
-        {
-         parallel{
+        
             stage('DEPLOY DEV SERVEUR ') 
                 {  
                    
@@ -59,12 +57,8 @@ def call (Map config)
                 }
             }
 
-            stage("hello")
-            {
-                echo "hellos"
-            }
-         }
-        }
+            
+        
    }
    
 }
