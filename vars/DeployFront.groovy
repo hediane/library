@@ -19,7 +19,7 @@ def call (Map config)
                                 sh "ssh root@87.106.205.95 'mkdir -p /var/Aosora/DevOps/Frontend'"
                                 sh "scp /srv/aoso/DevOps/frontend/docker-compose-front.yml root@87.106.205.95:/var/Aosora/DevOps/Frontend"
                                 sh "ssh root@87.106.205.95 docker-compose -f /var/Aosora/DevOps/Frontend/docker-compose-front.yml up -d"        
-                            input message: 'YOU CAN CHECK LOGS USING THIS LINKS {http://87.106.205.95:5601} '
+                            input message: 'YOU CAN CHECK LOGS USING THIS LINKS {http://149.102.138.184:5601} '
                             }
                         else 
                         {
