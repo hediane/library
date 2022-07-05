@@ -21,11 +21,11 @@ def call (Map config)
                         dir("${config.Dockerfile}")
                             {
                             sh "ls -a"
-                            dockerImage = docker.build "image-back/aoso" + ":latest" 
+                            dockerImage = docker.build "image-back/aoso"  
                             }
                         dir("${config.DestinationNginx}")
                             {
-                            dockerImage = docker.build "image-nginx-backend/aoso" + ":latest" 
+                            dockerImage = docker.build "image-nginx-backend/aoso" 
                             }
                     }
                         stage('push image in nexus'){      
