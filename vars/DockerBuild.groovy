@@ -2,7 +2,7 @@ def call (Map config)
 {
     node
         {   
-            stage('DEPLOY APP ') 
+            stage('DEPLOY DEV SERVEUR ') 
                 {  
                    
                     wrap([$class: 'BuildUser']) {
