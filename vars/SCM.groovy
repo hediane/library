@@ -12,10 +12,8 @@ def call (Map config)
                 url:"${config.scmurl}"]]
                
             ])
-            sh "ls -a"
-        }
-
-             sh "ls -la ${pwd()}"
+                sh "ls -a"
+                sh "ls -la ${pwd()}"
                  sh "ls -la ${pwd()}/source"
                  sh "mkdir -p /srv/aoso/DevOps/backend "
                  sh "ls -a /srv/aoso/DevOps/backend/"
@@ -27,6 +25,16 @@ def call (Map config)
                  sh "ls -la ${config.DestinationNginx} "
                  sh "ls -la ${config.DestinationFile} "
 
+        }
+            stage ('BUILD PROJECT ')
+            {
+               dir("${config.DestinationProject}") 
+               {
+                sh"dotnet restore"
+                sh"dotnet build"
+                sh"dotnet publish"
+               }
+            }
         }
     
 
