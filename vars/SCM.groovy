@@ -34,10 +34,7 @@ def call (Map config)
                dir("${config.DestinationProject}") 
                {
                 sh"dotnet restore"
-                sh"dotnet build"
-                sh"dotnet publish"
-                sh'dotnet run'
-               }
+                sh"dotnet build"               }
             }
         }
     
