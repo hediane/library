@@ -22,12 +22,12 @@ def call (Map config)
                             {
                             sh "ls -a"
 
-                            dockerImage = docker.build "image-back/aoso" + ":1.0.0" 
+                            dockerImage = docker.build "image-back/aoso" + "${config.tags}" 
 
                             }
                         dir("${config.DestinationNginx}")
                             {
-                            dockerImage2 = docker.build "image-nginx-backend/aoso" + ":1.1.0" 
+                            dockerImagenginx = docker.build "image-nginx-backend/aoso" + "${config.tags}" 
                             }
                     }
                         stage('push image in nexus'){      
@@ -35,7 +35,7 @@ def call (Map config)
                                 //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
                                 docker.withRegistry( 'http://149.102.138.184:8082/repository/Aosora', 'NexusSecret' ) { 
                                     dockerImage.push() 
-                                     dockerImage2.push() 
+                                     dockerImagenginx.push() 
                                 }
                     
                              }
