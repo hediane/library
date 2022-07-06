@@ -16,14 +16,22 @@ def call (Map config)
                     //sh 'dotnet pack --no-build --output nupkgs'
                 }*/
                 stage('CREATING OUR IMAGE'){      
-                        //def version = "latest"
-                        //sh 'docker build -f "${config.Dockerfile}" -t nexus_docker/aoso '
+                         sh "ls -la ${pwd()}"
+                 sh "ls -la ${pwd()}/source"
+                 sh "mkdir -p /srv/aoso/DevOps/backend "
+                 sh "ls -a /srv/aoso/DevOps/backend/"
+                 sh "cp -r ${config.DestinationFolder} ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationProject}"
+                 sh "ls -la ${config.DestinationProject} "
+                 sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFile}"
+                 sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
+                 sh "ls -la ${config.DestinationNginx} "
+                 sh "ls -la ${config.DestinationFile} "
+
                         dir("${config.Dockerfile}")
                             {
                             sh "ls -a"
-
                             dockerImage = docker.build "image-back/aoso" + ":${config.ImageVersion}" 
-
                             }
                         dir("${config.DestinationNginx}")
                             {

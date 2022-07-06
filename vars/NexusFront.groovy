@@ -19,7 +19,7 @@ def call (Map config)
 
                     dir("${config.Dockerfile}")
                             {
-                            dockerImage = docker.build "image-front/aoso" + ":latest" 
+                            dockerImage = docker.build "image-front/aoso" + ":${config.ImageVersion}" 
                             }
                         
                     }
