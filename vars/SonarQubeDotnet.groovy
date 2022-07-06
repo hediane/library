@@ -28,7 +28,7 @@ def call (Map config)
 
                                         input message: "CHECK YOUR QUALITY GATE"
                                         waitForQualityGate abortPipeline: true
-                                        Utils.markStageSkippedForConditional(QUALITY GATE)
+                                       
      
                                         } 
                                 else 
