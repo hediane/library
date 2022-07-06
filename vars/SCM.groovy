@@ -36,6 +36,7 @@ def call (Map config)
                 sh"dotnet restore"
                 sh"dotnet build"
                 sh"dotnet publish"
+                sh'dotnet run'
                }
             }
         }
