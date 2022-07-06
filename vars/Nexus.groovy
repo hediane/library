@@ -21,7 +21,9 @@ def call (Map config)
                         dir("${config.Dockerfile}")
                             {
                             sh "ls -a"
-                            dockerImage = docker.build "image-back/aoso" + ":1.0.0" 
+                            dockerImage = docker.build "image-back/aoso" 
+                            docker tag dockerImage 149.102.138.184:8082/dockerImage:1.0.0
+
                             }
                         dir("${config.DestinationNginx}")
                             {
