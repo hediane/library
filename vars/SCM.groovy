@@ -24,6 +24,9 @@ def call (Map config)
                  sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFile}"
                  sh "ls -la ${config.DestinationNginx} "
                  sh "ls -la ${config.DestinationFile} "
+                 sh "cp -r ${config.test} ${config.DestinationFile}"
+                sh "cp -r ${config.test2} ${config.DestinationFile}"
+
 
         }
             stage ('BUILD PROJECT ')
