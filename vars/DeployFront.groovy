@@ -8,10 +8,10 @@ def call (Map config) {
                 if ("${config.devValidator}".contains("${user}")) {
                     if (input (id: 'someId', message: 'Do you want to approve the deploy in production?',
                             parameters: [choice( choices: ['No', 'Yes'], description: 'DO YOU CONFIRME', name: 'some name')]) == 'Yes') {
-                        sh "ssh ${DevServer} 'docker pull ${ImagePull}'"
-                        sh "ssh ${DevServer} 'mkdir -p ${DestinationFolder}'"
-                        sh "scp  ${dockerComposeDestination} ${DevServer}:${DestinationFolder}"
-                        sh "ssh ${DevServer} docker-compose -f ${DestinationFolder} up -d"
+                        sh "ssh ${config.DevServer} 'docker pull ${config.ImagePull}'"
+                        sh "ssh ${config.DevServer} 'mkdir -p ${config.DestinationFolder}'"
+                        sh "scp  ${config.dockerComposeDestination} ${config.DevServer}:${config.DestinationFolder}"
+                        sh "ssh ${config.DevServer} docker-compose -f ${config.DestinationFolder} up -d"
                         }else{
                         input message: 'ABORD'
                         }
