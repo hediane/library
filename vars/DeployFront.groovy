@@ -11,7 +11,7 @@ def call (Map config) {
                         sh "ssh ${config.DevServer} 'docker pull ${config.ImagePull}'"
                         sh "ssh ${config.DevServer} 'mkdir -p ${config.DestinationFolder}'"
                         sh "scp  ${config.dockerComposeDestination} ${config.DevServer}:${config.DestinationFolder}"
-                        sh "ssh ${config.DevServer} docker-compose -f ${config.DestinationFolder} up -d"
+                        sh "ssh ${config.DevServer} docker-compose -f ${config.dockerComposeDestination} up -d"
                         }else{
                         input message: 'ABORD'
                         }
