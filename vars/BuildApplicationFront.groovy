@@ -11,11 +11,11 @@ def call (Map config) {
                     sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFolder}"
                     sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFolder}"
 
-            dir("${config.source}")
+            /*dir("${config.source}")
                {
                
                     sh'ng build'
-               }
+               }*/
             }
         }
 }
