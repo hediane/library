@@ -21,7 +21,7 @@ def call (Map config)
                                 sh "ssh ${config.DevServer} 'mkdir -p ${config.DestinationFolder}'"
                                 sh "scp ${config.dockerComposeDestination} ${config.DevServer}:${config.dockerComposeDestination}"
                                 sh "ssh  ${config.DevServer} docker-compose -f ${config.dockerComposeDestination} up -d"        
-                                input message: "YOU CAN CHECK LOGS USING THIS LINKS ${config.dockerComposeDestination} "
+                                input message: "YOU CAN CHECK LOGS USING THIS LINKS ${config.url_Elasticsearch_Kibana} "
                             }
                         else 
                         {
