@@ -11,7 +11,7 @@ def call (Map config)
                     sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFolder}"
                     sh "cp -r ${pwd()}${config.dockerComposeFileLocation} ${config.DestinationFolder}"
                     sh "cp -r ${pwd()}${config.nginxLocation} ${config.DestinationFolder}"
-                    dir("${config.DestinationProject}")
+                    dir("${config.DestinationFolder}")
                             {
                             dockerImage = docker.build "${config.ImageBuild}" + ":${config.ImageVersion}" 
                             }
