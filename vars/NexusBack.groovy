@@ -4,18 +4,17 @@ def call (Map config)
         {
                 stage('CREATING OUR IMAGE'){      
                     
-                        dir("${config.Dockerfile}")
+                        dir("${config.DestinationProject}")
                             {
-                            sh "ls -a"
-                            dockerImage = docker.build "image-back/aoso" + ":${config.ImageVersion}" 
+                            dockerImage = docker.build "${config.ImageBuild}" + ":${config.ImageVersion}" 
                             }
                         dir("${config.DestinationNginx}")
                             {
-                            dockerImagenginx = docker.build "image-nginx-backend/aoso" + ":${config.ImageVersion}" 
+                            dockerImagenginx = docker.build "${config.ImagenginxBuild}"+ ":${config.ImageVersion}" 
                             }
                     }
                         stage('PUSH IMAGE IN NEXUS'){      
-                                docker.withRegistry( 'http://149.102.138.184:8082/repository/Aosora', 'NexusSecret' ) { 
+                                docker.withRegistry( "${config.nexusRepository}", "${config.credentiel_id}" ) { 
                                     dockerImage.push() 
                                     dockerImagenginx.push() 
                                 }

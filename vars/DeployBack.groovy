@@ -16,12 +16,12 @@ def call (Map config)
                             {   
 
                                //sh "${config.dockerComposeLocation} -f ${config.dockerComposeDestination} up -d"
-                                sh "ssh root@87.106.205.95 'docker pull 149.102.138.184:8082/image-back/aoso'"
-                                sh "ssh root@87.106.205.95 'docker pull 149.102.138.184:8082/image-nginx-backend/aoso'"
-                                sh "ssh root@87.106.205.95 'mkdir -p /var/Aosora/DevOps/Backend'"
-                                sh "scp /srv/aoso/DevOps/backend/docker-compose-back.yml root@87.106.205.95:/var/Aosora/DevOps/Backend"
-                                sh "ssh root@87.106.205.95 docker-compose -f /var/Aosora/DevOps/Backend/docker-compose-back.yml up -d"        
-
+                                sh "ssh ${DevServer} 'docker pull ${ImagePull}'"
+                                sh "ssh ${DevServer} 'docker pull ${ImageNginxPull}'"
+                                sh "ssh ${DevServer} 'mkdir -p ${DestinationFolder}'"
+                                sh "scp ${dockerComposeDestination} ${DevServer}:${dockerComposeDestination}"
+                                sh "ssh  ${DevServer} docker-compose -f ${dockerComposeDestination} up -d"        
+                                input message: "YOU CAN CHECK LOGS USING THIS LINKS ${dockerComposeDestination} "
                             }
                         else 
                         {

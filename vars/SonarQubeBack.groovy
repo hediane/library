@@ -6,16 +6,14 @@ def call (Map config)
         stage('SONAR QUALITY ANALYSIS')
                {    
                   
-                    def scannerHome = tool name:'SonarScanner for MSBuild'
-                    withSonarQubeEnv('SonarQube')
+                    def scannerHome = tool name:"${config.SonarQubeTool}"
+                    withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
                         dir("${config.ProjectName}") {
-                        sh " ls -la ${pwd()}"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:Back /d:sonar.login=squ_6479873c456047cc6b816b8de68e3eb6505eb48d"
-                        //580029abd6076347f7f7115089508a365415fef3 "
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:${config.ProjectName} /d:sonar.login=${config.SonarQubeToken}"
                         sh "dotnet build"
-                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=squ_6479873c456047cc6b816b8de68e3eb6505eb48d"
-                        //a650a854dfc5fdfd835f432b6cbf52f369f6a2b1"
+                        sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end /d:sonar.login=${config.SonarQubeTool}"
+                        
                         }
                     }
                }
