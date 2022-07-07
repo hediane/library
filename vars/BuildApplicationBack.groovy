@@ -5,7 +5,7 @@ def call (Map config) {
         stage ('BUILD PROJECT ')
             {
            
-            dir("${config.DestinationProject}")
+            dir("${config.source}")
                {
                 sh'dotnet restore'
                 sh'dotnet build'
