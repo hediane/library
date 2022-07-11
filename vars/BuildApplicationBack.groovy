@@ -3,6 +3,8 @@ def call (Map config) {
     pipeline
         {
         agent any 
+        stages
+        {
         stage ('BUILD PROJECT ')
             {
            steps{
@@ -13,5 +15,6 @@ def call (Map config) {
                }
             }
             }
+        }
         }
 }
