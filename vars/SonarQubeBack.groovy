@@ -2,9 +2,7 @@ def call (Map config)
 {
     pipeline
         {
-         environment { 
-                    scannerHome = tool name:"${config.SonarQubeTool}"
-                        }  
+         
         agent any
         stages
         {
@@ -14,6 +12,9 @@ def call (Map config)
                    
                   steps{
                     //def  = tool name:"${config.SonarQubeTool}"
+                    environment { 
+                    scannerHome = tool name:"${config.SonarQubeTool}"
+                        }  
                     echo "${scannerHome}"
                     withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
