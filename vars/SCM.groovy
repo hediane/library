@@ -1,20 +1,17 @@
 def call (Map config)
 
 {
-    pipeline
+    node
         {
-            agent any
-        stages{
+
             stage('GitSCM') {
-                steps{
-                checkout([$class: 'GitSCM',
-                branches: [[name: 'refs/heads/main']],
-                userRemoteConfigs: [[
-                    url:"${config.scmurl}"]]
+            checkout([$class: 'GitSCM',
+            branches: [[name: 'refs/heads/main']],
+            userRemoteConfigs: [[
+                url:"${config.scmurl}"]]
 
             ])
-                }
+
             }
-        }
         }
 }

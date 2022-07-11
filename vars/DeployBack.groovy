@@ -1,13 +1,11 @@
 def call (Map config)
 {
-    pipeline
-        {
-        agent any
-        stages{
+    node
+        {  
+        
             stage('DEPLOY DEV SERVEUR ') 
                 {  
-                   steps
-                   {
+                   
                     wrap([$class: 'BuildUser']) {
                     def user = env.BUILD_USER_ID
                         
@@ -38,10 +36,9 @@ def call (Map config)
                      }
                 }
             }
-        
+
             
         
-        }
+   }
    
-    }
-}}
+}

@@ -1,14 +1,11 @@
 def call (Map config)
 { 
     
-    pipeline
-        {
-        agent any
-        stages
+    node
         {
             
             stage('Creating our image'){
-                    steps{
+                    
                     sh "mkdir -p ${config.DestinationFolder} "
                     sh "cp -r ${config.source} ${config.DestinationFolder}"
                     sh "cp -r ${pwd()}${config.DockerfileLocation} ${config.DestinationFolder}"
@@ -19,17 +16,17 @@ def call (Map config)
                             dockerImage = docker.build "${config.ImageBuild}" + ":${config.ImageVersion}" 
                             }
                         
-                    }}
+                    }
             stage('push image in nexus'){      
-                steps{
+                                
                     docker.withRegistry( "${config.nexusRepository}", "${config.credentiel_id}" ) { 
                         dockerImage.push() 
                                 } 
                              }
-            }
+             
         
 
                }
         
         
-}}
+}
