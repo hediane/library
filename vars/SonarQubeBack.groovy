@@ -14,7 +14,7 @@ def call (Map config)
                         }
                   steps{
                     //def  = tool name:"${config.SonarQubeTool}"
-                     
+                    echo "${scannerHome}"
                     withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
                         dir("${config.source}") {
