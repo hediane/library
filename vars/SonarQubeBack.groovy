@@ -13,7 +13,7 @@ def call (Map config)
                   steps{
                     //def  = tool name:"${config.SonarQubeTool}"
                     environment { 
-                    scannerHome = tool name:"${config.SonarQubeTool}"
+                    scannerHome = "tool name:'${config.SonarQubeTool}'"
                         }  
                     echo "${scannerHome}"
                     withSonarQubeEnv("${config.SonarQubeEnv}")
