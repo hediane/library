@@ -7,10 +7,10 @@ def call (Map config)
         stages{
             stage('GitSCM') {
                 steps{
-            checkout([$class: 'GitSCM',
-            branches: [[name: 'refs/heads/main']],
-            userRemoteConfigs: [[
-                url:"${config.scmurl}"]]
+                checkout([$class: 'GitSCM',
+                branches: [[name: 'refs/heads/main']],
+                userRemoteConfigs: [[
+                    url:"${config.scmurl}"]]
 
             ])
                 }

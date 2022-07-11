@@ -1,11 +1,14 @@
 def call (Map config)
 {
-    node
-    {
+    pipeline
+        {
+        agent any
+        stages
+        {
          
         stage('SONAR QUALITY ANALYSIS')
                {    
-                  
+                  steps{
                     def scannerHome = tool name:"${config.SonarQubeTool}"
                     withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
@@ -16,9 +19,11 @@ def call (Map config)
                         
                         }
                     }
+                  }
                }
                 stage("QUALITY GATE")
-                        {
+                        { 
+                        steps{
                             def qualitygate = waitForQualityGate()
 
                                 if (qualitygate.status != "OK")
@@ -34,7 +39,7 @@ def call (Map config)
                                         input message: "YOUR APP IS READY TO PACKGING"
                                         }
                                 
-                        }
+                        }}
                             
                             
         }
@@ -43,4 +48,4 @@ def call (Map config)
 
  
     
-}
+}}
