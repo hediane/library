@@ -1,9 +1,10 @@
 def call (Map config)
 
 {
-    node
+    pipeline
         {
-
+            agent any
+        stages{
             stage('GitSCM') {
             checkout([$class: 'GitSCM',
             branches: [[name: 'refs/heads/main']],
@@ -13,5 +14,6 @@ def call (Map config)
             ])
 
             }
+        }
         }
 }
