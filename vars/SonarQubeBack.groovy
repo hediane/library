@@ -2,6 +2,7 @@ def call (Map config)
 {
     pipeline
         {
+           
         agent any
         stages
         {
@@ -9,7 +10,10 @@ def call (Map config)
         stage('SONAR QUALITY ANALYSIS')
                {    
                   steps{
-                    def scannerHome = tool name:"${config.SonarQubeTool}"
+                    //def  = tool name:"${config.SonarQubeTool}"
+                     environment { 
+                    scannerHome = tool name:"${config.SonarQubeTool}"
+                        }
                     withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
                         dir("${config.source}") {
