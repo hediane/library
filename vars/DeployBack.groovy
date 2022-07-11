@@ -20,8 +20,9 @@ def call (Map config)
                                 //sh "ssh ${config.DevServer} 'docker pull ${config.ImageNginxPull}'"
                                 sh "ansible -m ping  dev"
                                 sh "ssh ${config.DevServer} 'mkdir -p ${config.DestinationFolder}'"
-                                sh "scp ${config.dockerComposeDestination} ${config.DevServer}:${config.dockerComposeDestination}"
-                                sh "ssh  ${config.DevServer} docker-compose -f ${config.dockerComposeDestination} up -d"        
+                                sh "ansible -playbook ansible/playbook.yml -i inventory/dev.ini  "
+                                //sh "scp ${config.dockerComposeDestination} ${config.DevServer}:${config.dockerComposeDestination}"
+                                //sh "ssh  ${config.DevServer} docker-compose -f ${config.dockerComposeDestination} up -d"        
                                 input message: "YOU CAN CHECK LOGS USING THIS LINKS ${config.url_Elasticsearch_Kibana} "
                             }
                         else 
