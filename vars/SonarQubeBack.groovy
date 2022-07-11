@@ -9,11 +9,12 @@ def call (Map config)
          
         stage('SONAR QUALITY ANALYSIS')
                {    
-                  steps{
-                    //def  = tool name:"${config.SonarQubeTool}"
-                     environment { 
+                   environment { 
                     scannerHome = tool name:"${config.SonarQubeTool}"
                         }
+                  steps{
+                    //def  = tool name:"${config.SonarQubeTool}"
+                     
                     withSonarQubeEnv("${config.SonarQubeEnv}")
                     {
                         dir("${config.source}") {
