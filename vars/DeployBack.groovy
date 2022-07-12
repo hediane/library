@@ -23,7 +23,7 @@ def call (Map config)
                                 //sh "ansible --playbook-dir ansible -i inventory/dev.ini dev"
                                 sh "scp ${config.dockerComposeDestination} ${config.DevServer}:${config.dockerComposeDestination}"
                                 sh "ssh  ${config.DevServer} docker-compose -f ${config.dockerComposeDestination} up -d"        
-                                input message: "YOU CAN CHECK LOGS USING THIS LINKS ${config.url_Elasticsearch_Kibana} "
+                               // input message: "YOU CAN CHECK LOGS USING THIS LINKS ${config.url_Elasticsearch_Kibana} "
                             }
                         else 
                         {
