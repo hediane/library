@@ -18,13 +18,9 @@ def call (Map config)
                     if (qualitygate.status != "OK")
                             {
 
-                               input message: "CHECK YOUR QUALITY GATE"
                                waitForQualityGate abortPipeline: true     
                             } 
-                    else 
-                            {
-                             input message: "YOUR APP IS READY TO PACKGING"
-                            }
+                   
                     
             }
     }
